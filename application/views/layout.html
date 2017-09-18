@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-cn" class="do-cke">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <link rel="dns-prefetch" href="//st.styleweb.cn">
+    <link rel="dns-prefetch" href="//image.styleweb.cn">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <!--[if lt IE 9]>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"><![endif]--><title>首页-装修设计</title>
+    <meta name="robots" content="all"/>
+    <style>.wow {
+        visibility: hidden;
+    }</style>
+    <!--[if lt IE 9]>
+    <style>.wow {
+        visibility: visible;
+    }</style><![endif]-->
+    <link href="{{'static/css/animate.css'|base_url}}?2017829173845" rel="stylesheet" type="text/css"/>
+    <link href="{{'static/css/colors.css'|base_url}}?2017829173845" rel="stylesheet" type="text/css"/>
+    <link href="{{'static/css/style.css'|base_url}}?2017829173845" rel="stylesheet" type="text/css"/>
+    {{if $page == "case"}}
+    <link href="{{'static/js/fullPage/jquery.fullPage.css'|base_url}}" rel="stylesheet">
+    {{/if}}
+    <style>
+        .do-element-button-content .do-btn.sm {
+            padding: 6px 36px;
+        }
+    </style>
+    <script type="text/javascript">
+        var StaticUrl = 'http:\/\/bk.st.styleweb.com.cn\/';
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+
+        var browser = navigator.appName;
+        var b_version = navigator.appVersion;
+        var version = b_version.split(";");
+        var _vm = {};
+        var trim_Version = version[1] ? version[1].replace(/[ ]/g, "") : "";
+        var isIe = {
+            ie6: browser == "Microsoft Internet Explorer" && trim_Version == "MSIE6.0",
+            ie7: browser == "Microsoft Internet Explorer" && trim_Version == "MSIE7.0",
+            ie8: browser == "Microsoft Internet Explorer" && trim_Version == "MSIE8.0",
+            ie9: browser == "Microsoft Internet Explorer" && trim_Version == "MSIE9.0"
+        }
+
+        function isWeiXin() {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        var version = {'css': '2017829173845', 'js': '2017829173844'};
+        function setCookie(c_name, value, expiredays) {
+            var exdate = new Date()
+            exdate.setDate(exdate.getDate() + expiredays)
+            document.cookie = c_name + "=" + escape(value) + ";path=/" + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
+        }
+
+
+        setCookie("time_offset", -new Date().getTimezoneOffset() / 60);
+    </script>
+    <script src="{{'static/js/jquery.min.js'|base_url}}"></script>
+    <link rel="shortcut icon" type="image/ico" href="http://temp.im/64x64"/>
+    <link rel="stylesheet" href="{{'static/css/element-list-style.css'|base_url}}">
+    {{if $page == "home"}}
+    <style>
+        #area_16990_0 .do-area-bg-conter .bgcolor {
+            background-color: rgba(157, 138, 121, 0.1);
+        }
+
+        .lt-ie9 #area_16990_0 .do-area-bg-conter .bgcolor {
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#199d8a79, endColorstr=#199d8a79)
+        }
+
+        #area_16990_2 .do-area-bg-conter .bgcolor {
+            background-color: rgba(157, 138, 121, 0.1);
+        }
+
+        .lt-ie9 #area_16990_2 .do-area-bg-conter .bgcolor {
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#199d8a79, endColorstr=#199d8a79)
+        }
+
+        #footer_16990_0 .do-area-bg-conter .bgcolor {
+            background-color: rgba(157, 138, 121, 0.1);
+        }
+
+        .lt-ie9 #footer_16990_0 .do-area-bg-conter .bgcolor {
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#199d8a79, endColorstr=#199d8a79)
+        }
+    </style>
+    {{else if $page == "case"}}
+    <style>
+        #area_17093_1 .do-area-bg-conter .bgcolor {
+            background-color: rgba(10, 10, 10, 0.39);
+        }
+
+        .lt-ie9 #area_17093_1 .do-area-bg-conter .bgcolor {
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#660a0a0a, endColorstr=#660a0a0a)
+        }
+
+        #area_17093_3 .do-area-bg-conter .bgcolor {
+            background-color: rgba(25, 24, 24, 0.37);
+        }
+
+        .lt-ie9 #area_17093_3 .do-area-bg-conter .bgcolor {
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66191818, endColorstr=#66191818)
+        }
+
+        #footer_17093_0 .do-area-bg-conter .bgcolor {background-color: rgba(157, 138, 121, 0.1);}
+        .lt-ie9 #footer_17093_0 .do-area-bg-conter .bgcolor { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#199d8a79, endColorstr=#199d8a79)  }
+    </style>
+    {{else if $page == "team"}}
+    <style>
+        #banner_17098_0 .do-area-bg-conter .bgcolor { background-color:rgb(24, 24, 27); }
+        #area_17098_0 .do-area-bg-conter .bgcolor { background-color:rgb(24, 24, 27); }
+        #footer_17098_0 .do-area-bg-conter .bgcolor { background-color:rgba(157, 138, 121, 0.1); }.lt-ie9 #footer_17098_0 .do-area-bg-conter .bgcolor { filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#199d8a79,endColorstr=#199d8a79) }
+    </style>
+    {{else if $page == "life"}}
+    <style>
+        #banner_17099_0 .do-area-bg-conter .bgcolor { background-color:rgb(24, 24, 27); }
+        #area_17099_0 .do-area-bg-conter .bgcolor { background-color:rgb(24, 24, 27); }
+        #footer_17099_0 .do-area-bg-conter .bgcolor { background-color:rgba(157, 138, 121, 0.1); }.lt-ie9 #footer_17099_0 .do-area-bg-conter .bgcolor { filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#199d8a79,endColorstr=#199d8a79) }
+    </style>
+    {{/if}}
+    <style>
+        .z-nav {
+            text-align: right;
+        }
+
+        .z-nav-conter > li.active > a, .z-nav-conter > li:hover > a {
+            color: rgba(222, 221, 221, 0.98);
+        }
+
+        .z-nav-conter > li:hover > a {
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .z-nav-conter > li:hover > a {
+            background-color: rgba(0, 0, 0, 0);
+            color: rgba(222, 221, 221, 0.98);
+        }
+
+        .z-nav-conter > li > a {
+            color: rgba(251, 247, 247, 0.98);
+        }
+
+        .z-nav-conter > li > a {
+            color: rgba(251, 247, 247, 0.98);
+            font-size: 16px;
+        }
+
+        .z-nav-conter > li > a {
+            color: rgba(251, 247, 247, 0.98);
+            font-size: 16px;
+            line-height: 1.85em;
+        }
+    </style>
+</head>
+<body do-page-width="1" class="fr-element fr-view do-page-16990" do-phone-nav="" do-phonenav-slip-direction=""
+      do-phonenav-btnalign="">
+<div class="do-nav-mwp"><input type="checkbox" id="do-m-menustate" class="do-m-menustate">
+    <div class="do-nav-m">
+        <label class="do-m-menustate" for="do-m-menustate"><span class="do-m-menustate-span"></span></label>
+        <div class="do-nav-m-bar animate">
+            <ul class="do-nav-m-ul clearfix">
+                <li class="nav16990 active" data-id="16990"><a href="{{'home/index'|base_url}}"><span>首页</span></a></li>
+                <li class="nav17093" data-id="17093"><a href="{{'home/classic_case'|base_url}}"><span>案例</span></a></li>
+                <li class="nav17098" data-id="17098"><a href="{{'home/team'|base_url}}"><span>团队</span></a></li>
+                <li class="nav17099" data-id="17099"><a href="{{'home/life'|base_url}}"><span>生活</span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="do-adrift">
+    <div class="do-gotop"><i class="icon-rocket"></i></div>
+</div>
+<div class="do-container animate">
+    <div id="fullpage">
+        <div class="fp-normal-scroll do-header" do-header-fixed="true">
+            <div class="do-area" id="header_16990_0">
+                <div class="do-area-bg">
+                    <div class="do-area-bg-conter">
+                        <div class="bgcolor"></div>
+                    </div>
+                </div>
+                <div d="header_0" class="do-row do-row-one">
+                    <div class="do-row ">
+                        <div class="do-col-12">
+                            <div class="do-panelcol">
+                                <div class="do-block do-rows">
+                                    <div class="do-row spacing1 huzi-nav">
+                                        <div class="do-col-2">
+                                            <div class="do-panelcol">
+                                                <div class="do-block do-logo do-2285c">
+                                                    <div do-logo="" class="do-logo">
+                                                        <div class="z-logo align-left size7"><a href="/" title=""><img
+                                                                src="http://temp.im/117x79"
+                                                                alt="logo"/></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="do-col-10">
+                                            <div class="do-panelcol">
+                                                <div class="do-block do-nav do-2285b">
+                                                    <div class="z-nav align-center">
+                                                        <div class="z-nav-bar">
+                                                            <div class="z-nav-container">
+                                                                <ul class="z-nav-conter clearfix">
+                                                                    <li class="nav16990 active" data-id="16990"><a
+                                                                            href="{{'home/index'|base_url}}"><span>首页</span></a>
+                                                                    </li>
+                                                                    <li class="nav17093" data-id="17093"><a
+                                                                            href="{{'home/classic_case'|base_url}}"><span>案例</span></a>
+                                                                    </li>
+                                                                    <li class="nav17098" data-id="17098"><a
+                                                                            href="{{'home/team'|base_url}}"><span>团队</span></a>
+                                                                    </li>
+                                                                    <li class="nav17099" data-id="17099"><a
+                                                                            href="{{'home/life'|base_url}}"><span>生活</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="z-nav-btn"><span class="line-1"></span><span
+                                                                class="line-2"></span><span class="line-3"></span></div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{include $__PAGE__}}
+        <div class="do-footer">
+            <div class="do-area" id="footer_16990_0">
+                <div class="do-area-bg">
+                    <div class="do-area-bg-conter">
+                        <div class="bgcolor"></div>
+                    </div>
+                </div>
+                <div id="footer_0" class="do-row do-row-one">
+                    <div class="do-row ">
+                        <div class="do-col-12">
+                            <div class="do-panelcol">
+                                <div class="do-block do-space do-2285d">
+                                    <div class="do-element-space" style="padding-top:4.5%;"></div>
+                                </div>
+                                <div class="do-block do-text do-23b4a">
+                                    <div class="do-element-text do-element-general">
+                                        <div class="do-element-text-content do-html">
+                                            <div class="do-html-content"><p style="text-align: center;">
+                                                <img class="fr-dii" src="http://temp.im/238x86"
+                                                     style="width: 238px;"><br>
+                                            </p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="do-block do-space do-23jpv">
+                                    <div class="do-element-space" style="padding-top:2.5%;"></div>
+                                </div>
+                                <div class="do-block do-text do-23b49">
+                                    <div class="do-element-text do-element-general">
+                                        <div class="do-element-text-content do-html">
+                                            <div class="do-html-content"><p style="text-align: center;"><span
+                                                    style="font-size: 18px;"><span style="color: rgb(0, 0, 0);"><strong>客服电话：400-097-5xxx &nbsp; &nbsp;传真固话：028-64565xxx &nbsp; &nbsp;</strong></span></span>
+                                            </p>
+                                                <p style="text-align: center;"><span style="font-size: 18px;"><span
+                                                        style="color: rgb(0, 0, 0);"><strong>客服邮箱：support@xxx.im &nbsp; &nbsp;</strong></span></span><span
+                                                        style="font-size: 18px;"><span
+                                                        style="color: rgb(0, 0, 0);"><strong>新浪微博：weibo.com/u/xxx&nbsp;</strong></span></span>
+                                                </p>
+                                                <p style="text-align: center;"><span style="font-size: 18px;"><span
+                                                        style="color: rgb(0, 0, 0);"><strong>公司地址：成都市高新区中和大道xxx</strong></span></span>
+                                                </p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="do-block do-space do-2285e">
+                                    <div class="do-element-space" style="padding-top:4.785714285714286%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            body .do-developers, .do-developers {
+                color: #666 !important;
+                width: 100% !important;
+                height: 38px !important;
+            }
+
+            body .do-developers a, .do-developers a {
+                color: #666 !important;
+                display: inline-block !important;
+            }
+
+            body .do-developers a:hover, .do-developers a:hover {
+                color: #000 !important;
+            }
+
+            body .do-developers, .do-developers {
+                display: block !important;
+                border-top: 1px solid #ecebeb !important;
+                background: #f3f3f3 !important;
+                padding: 12px !important;
+                text-align: center !important;
+                font-size: 13px !important;
+                line-height: 100% !important;
+                opacity: 1 !important;
+                text-indent: 0 !important
+            }
+
+            body .do-developers i, .do-developers i {
+                font-size: 13px !important;
+                vertical-align: middle;
+                position: relative;
+                top: -1px
+            }
+
+            body .do-developers *, .do-developers * {
+                opacity: 1 !important;
+                text-indent: 0 !important;
+                display: inline-block !important;
+            }
+
+
+        </style>
+    </div>
+    <script src="{{'static/js/serializeJSON.js'|base_url}}"></script>
+    <script src="{{'static/js/common.js'|base_url}}?2017829173844"></script>
+    <script src="{{'static/js/gt.js'|base_url}}"></script>
+    <script src="{{'static/js/1.js'|base_url}}?2017829173844"></script>
+    <script src="{{'static/js/swipers.js'|base_url}}?2017829173844"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+
+            var wow = new WOW({
+                animateClass: 'animated',
+                offset: 100,
+                callback: function (box) {
+                }
+            });
+            wow.init();
+
+            if (isWeiXin() && bIsAndroid) {
+                var fullArea = $(".do-area-fullHeight .do-row-one > .do-row, .do-slide-full");
+                fullArea.height($(window).height());
+            }
+
+            if (head.desktop) {
+                if (!_vm.online) $("#do-online-service").prop("checked", true);
+            } else {
+                $("#do-online-service").prop("checked", false);
+            }
+
+
+            if (bIsAndroid) {
+                $(".do-area-videobg").find("video").remove();
+                var vodbgObj = $(".do-area-videobg .do-area-bg-conter");
+                vodbgObj.each(function () {
+                    $(this).css('background-image', 'url("' + $(this).data("vodbg") + '")');
+                });
+            }
+
+
+            var weixinBtn = $(".weixinBtn"),
+                    popwximg = $(".do-popwximg");
+            if (weixinBtn.length) {
+                weixinBtn.on("click", function (e) {
+                    popwximg.show();
+                });
+                popwximg.on("click", ".do-close", function () {
+                    popwximg.hide();
+                });
+            }
+
+            layer.config({
+                path: 'http:\/\/bk.st.styleweb.com.cn\/editor/js/layer/',
+                extend: ['skin/style.css'],
+                skin: 'layer-zhuzi'
+            });
+        });
+    </script>
+</body>
+</html>
