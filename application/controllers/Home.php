@@ -22,12 +22,43 @@ class Home extends PublicController
     }
 
     /**
+     * 游客报名
+     */
+    public function signup()
+    {
+        $username = trim($this->input->post("username"));
+        $phone = $this->input->post("phone");
+        if (!isset($username) || empty($username)) {
+            $this->json_result(400, "", "请输入姓名");
+        }
+        if (!isset($phone) || empty($phone)) {
+            $this->json_result(400, "", "请输入手机号");
+        }
+        if (!is_mobile_num($phone)) {
+            $this->json_result(400, "", "抱歉,请输入正确的手机号码");
+        }
+        $this->load->model("UserModel", "user", true);
+        $add_status = $this->user->signup_user($username, $phone);
+        if ($add_status) {
+            $this->json_result(0, "报名提交成功");
+        } else {
+            $this->json_result(400, "", "抱歉报名失败");
+        }
+    }
+
+    /**
      * 经典案例
      */
     public function classic_case()
     {
         $this->vars['page'] = "case";
         $this->page("case.html");
+    }
+
+    public function case_desc()
+    {
+        $this->vars['page'] = "desc";
+        $this->page("case_desc.html");
     }
 
     /**

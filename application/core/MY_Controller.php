@@ -13,6 +13,7 @@ class PublicController extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->helper("common");
         $this->load->library('smarty/Smarty');
         $this->load->library('session');
         $this->smarty->setCompileDir(APPPATH . '/cache/tpl');
@@ -53,14 +54,19 @@ class PublicController extends CI_Controller
         exit();
     }
 
-    public function result($succ, $message, $redirect = "", $external = false)
+    /**
+     * 格式化json输出
+     * @param $code
+     * @param $result
+     * @param $emsg
+     */
+    public function json_result($code, $result, $emsg = "")
     {
+        ob_end_clean();
         $result = array(
-            'status'   => (bool)$succ,
-            'message'  => $message,
-            'redirect' => $this->config->base_url($redirect),
-            'addon'    => ob_get_clean(),
-            'external' => $external,
+            'ecode'  => intval($code),
+            'result' => $result,
+            'emsg'   => $emsg
         );
         header('Content-Type: text/json;charset=utf8');
         echo json_encode($result);
