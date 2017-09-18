@@ -27,6 +27,7 @@ class UserModel extends MY_Model
         );
         $insert_status = $this->db->insert("t_guest", $userinfo);
         $affected_row = $this->db->affected_rows();
+        log_message("info", "[insert guest], status:" . (string)$insert_status . ", affect row:{$affected_row}");
         if ($insert_status && $affected_row == 1) {
             return true;
         } else {
