@@ -111,3 +111,15 @@ class PublicController extends CI_Controller
         return http_build_query($new);
     }
 }
+class AdController extends PublicController
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $admin_id = $this->session->userdata("admin_user");
+        if (empty($admin_id)) {
+            redirect("passport/admin_login", "auto", 302);
+        }
+        $this->layout = "admin/layout.html";
+    }
+}
