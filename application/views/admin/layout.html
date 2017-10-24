@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <title>商品管理后台</title>
+
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/><![endif]-->
+    <link href="{{'static/bscss/bootstrap.min.css'|base_url}}" rel="stylesheet">
+    <link href="{{'static/bscss/font-awesome.css'|base_url}}?v=4.4.0" rel="stylesheet">
+    <link href="{{'static/bscss/bootstrap.min.css'|base_url}}" rel="stylesheet">
+    <link href="{{'static/bscss/style.min.css'|base_url}}?v=4.1.0" rel="stylesheet">
+    <script type="text/javascript" src="{{'static/bsjs/jquery.min.js'|base_url}}"></script>
+    {{if $page == "level_list"}}
+    <link href="{{'static/js/plugins/jsTree/style.min.css'|base_url}}" rel="stylesheet">
+    {{/if}}
+</head>
+
+<body class="fixed-sidebar  gray-bg">
+<div id="wrapper">
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close"><i class="fa fa-times-circle"></i>
+        </div>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <span>
+                            <img alt="image" class="img-circle" src="{{'static/images/admin.png'|base_url}}"/>
+                        </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                               <span class="block m-t-xs"><strong class="font-bold">{{$smarty.session.admin_user}}</strong></span>
+                                <span class="text-muted text-xs block">管理员<b class="caret"></b></span>
+                                </span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li>
+                                <a href="{{'passport/admin_logout'|base_url}}">退出</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">H+
+                    </div>
+                </li>
+                <li {{if $row =="admin"}} class="active"{{/if}}>
+                <a href="#">
+                    <i class="fa fa-lock"></i> <span class="nav-label">管理员列表</span> <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{'admin/index'|base_url}}" data-index="0">管理员列表</a>
+                    </li>
+                </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航结束-->
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i>
+                    </a>
+                    <!--<form role="search" class="navbar-form-custom" method="post" action="search_results.html">-->
+                    <!--<div class="form-group">-->
+                    <!--<input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">-->
+                    <!--</div>-->
+                    <!--</form>-->
+                </div>
+            </nav>
+        </div>
+        <div class="row J_mainContent" id="content-main">
+            {{include $__PAGE__}}
+        </div>
+        <div class="footer fixed">
+            <div class="pull-right">&copy; 2014-2017
+                <a href="http://www.proculus.net/" target="_blank">商品管理后台</a>
+            </div>
+        </div>
+    </div>
+    <!--右侧部分结束-->
+    <!--右侧边栏开始-->
+    <div id="right-sidebar">
+    </div>
+    <!--右侧边栏结束-->
+</div>
+<script type="text/javascript" src="{{'static/bsjs/bootstrap.min.js'|base_url}}"></script>
+<script type="text/javascript" src="{{'static/bsjs/jquery.metisMenu.js'|base_url}}"></script>
+<script type="text/javascript" src="{{'static/bsjs/jquery.slimscroll.min.js'|base_url}}"></script>
+<script type="text/javascript" src="{{'static/js/plugins/layer/layer.min.js'|base_url}}"></script>
+<script type="text/javascript" src="{{'static/bsjs/hplus.min.js'|base_url}}"></script>
+<script type="text/javascript" src="{{'static/bsjs/contabs.min.js'|base_url}}"></script>
+<script type="text/javascript" src="{{'static/bsjs/pace.min.js'|base_url}}"></script>
+{{if $page == "level_list"}}
+<script type="text/javascript" src="{{'static/js/plugins/jsTree/jstree.min.js'|base_url}}"></script>
+{{/if}}
+</body>
+</html>

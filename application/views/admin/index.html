@@ -1,0 +1,132 @@
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="text-muted small pull-right">
+                        <a data-toggle="modal" class="btn btn-primary" href="#modal-form">添加</a>
+                    </div>
+                    <h2>管理员列表</h2>
+                    <div class="clients-list">
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane active">
+                                <div class="full-height-scroll">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover">
+                                            <thead>
+                                            <th>ID</th>
+                                            <th>用户名</th>
+                                            <th>创建时间</th>
+                                            <th>上次登录时间</th>
+                                            <th>登录状态</th>
+                                            <th>操作</th>
+                                            </thead>
+                                            <tbody>
+                                            {{foreach $admin_list as $admin}}
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    {{$admin.admin_id}}
+                                                </td>
+                                                <td>
+                                                    <a data-toggle="tab" href="#contact-1" class="client-link">{{$admin.username}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$admin.create_time|date_format:"%Y-%m-%d %H:%m:%S"}}
+                                                </td>
+                                                <td>
+                                                    {{if $admin.login_time == 0}}
+                                                    从未登录
+                                                    {{else}}
+                                                    {{$admin.login_time|date_format:"%Y-%m-%d %H:%m:%S"}}
+                                                    {{/if}}
+                                                </td>
+                                                <td class="client-status">
+                                                    <span class="label {{if $admin.user_status == 0}}label-primary{{elseif $admin.user_status ==1}}label-danger{{/if}}">{{if $admin.user_status == 0}}正常{{elseif $admin.user_status ==1}}已禁止{{/if}}</span>
+                                                </td>
+                                                <td>
+                                                    <button data-id="{{$admin.admin_id}}" data-status="{{$admin.user_status}}" class="btn btn-xs {{if $admin.user_status == 0}}btn-danger{{elseif $admin.user_status == 1}}btn-primary{{/if}} operate">
+                                                        {{if $admin.user_status == 0}}禁用{{elseif $admin.user_status ==1}}启用{{/if}}
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            {{/foreach}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    {{$pagelist}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-form" class="modal fade" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="m-t-none m-b">添加管理员</h3>
+                        <form role="form" class="admin-user" onsubmit="return false;">
+                            <div class="form-group">
+                                <label>登录用户名：</label>
+                                <input type="text" name="user-name" placeholder="请输入用户名"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>密码：</label>
+                                <input type="password" name="password" placeholder="请输入密码"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>重复密码：</label>
+                                <input type="password" name="repwd" placeholder="请再次输入密码确认"
+                                       class="form-control">
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="add-user" type="submit">
+                                    <strong>提交</strong>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/javascript">
+    $(function () {
+        $("#add-user").on("click", function () {
+            $.post("{{'admin/add_user'|base_url}}", $(".admin-user").serialize(), function (res) {
+                if (res.ecode == 0) {
+                    layer.msg(res.result);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 3000);
+                }
+                else {
+                    layer.msg(res.emsg);
+                }
+            })
+        });
+        $(".operate").on("click", function () {
+            var userstatus = $(this).data("status");
+            var id = $(this).data("id");
+            $.post("{{'admin/operate_admin'|base_url}}", {id: id, status: userstatus}, function (res) {
+                if (res.ecode == 0) {
+                    layer.msg(res.result);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 3000);
+                }
+                else {
+                    layer.msg(res.emsg);
+                }
+            });
+        })
+    })
+</script>

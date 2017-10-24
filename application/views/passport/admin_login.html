@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="{{'static/bscss/bootstrap.min.css'|base_url}}" rel="stylesheet">
+    <link href="{{'static/bscss/font-awesome.css'|base_url}}?v=4.4.0" rel="stylesheet">
+    <link href="{{'static/bscss/bootstrap.min.css'|base_url}}" rel="stylesheet">
+    <link href="{{'static/bscss/style.min.css'|base_url}}?v=4.1.0" rel="stylesheet">
+    <link href="{{'static/bscss/login.min.css'|base_url}}" rel="stylesheet">
+    <script type="text/javascript" src="{{'static/bsjs/jquery.min.js'|base_url}}"></script>
+    <script type="text/javascript" src="{{'static/js/plugins/layer/layer.min.js'|base_url}}"></script>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/><![endif]-->
+    <script>
+        if (window.top !== window.self) {
+            window.top.location = window.location
+        }
+        ;
+    </script>
+
+</head>
+
+<body class="signin">
+<div class="signinpanel">
+    <div class="row">
+        <div class="col-sm-7">
+        </div>
+        <div class="col-sm-5">
+            <form method="post" id="signin-form" action="" onsubmit="return false;">
+                <p class="login-title">登录</p>
+                <input type="text" class="form-control username" name="username" placeholder="username"/>
+                <input type="password" class="form-control password m-b" name="password" placeholder="password"/>
+                <button class="btn btn-success btn-block">登录</button>
+            </form>
+        </div>
+    </div>
+    <div class="signup-footer">
+        <div class="pull-left">
+            &copy; 2017 All Rights Reserved.
+        </div>
+    </div>
+</div>
+</body>
+<script type="application/javascript">
+    $(function () {
+        $(".btn-block").on("click", function () {
+            $.post("{{'passport/admin_login'|base_url}}", $("#signin-form").serialize(), function (res) {
+                if (res.ecode == 0) {
+                    window.location.href = res.result;
+                }
+                else {
+                    layer.msg(res.emsg);
+                }
+            });
+        });
+    });
+</script>
+
+</html>
