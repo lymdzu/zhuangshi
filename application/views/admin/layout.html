@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <title>商品管理后台</title>
+    <title>秋空设计</title>
 
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -61,6 +61,12 @@
                     </li>
                 </ul>
                 </li>
+
+                <li {{if $row =="admin"}} class="active"{{/if}}>
+                <a href="{{'menu/level_list'|base_url}}">
+                    <i class="fa fa-navicon"></i> <span class="nav-label">微信菜单设置</span>
+                </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -85,7 +91,7 @@
         </div>
         <div class="footer fixed">
             <div class="pull-right">&copy; 2014-2017
-                <a href="http://www.proculus.net/" target="_blank">商品管理后台</a>
+                <a href="http://www.proculus.net/" target="_blank">秋空DESIGN后台</a>
             </div>
         </div>
     </div>

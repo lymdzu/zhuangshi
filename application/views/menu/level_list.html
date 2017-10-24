@@ -1,0 +1,238 @@
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="ibox">
+            <div class="col-sm-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>微信菜单</h5>
+                        <div class="ibox-tools">
+                            <a data-toggle="modal" class="btn btn-primary btn-xs add-btn" href="#modal-form">添加菜单</a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="project-list">
+
+                            <table class="table table-hover">
+                                <thead>
+                                <th>编号</th>
+                                <th>菜单级别</th>
+                                <th>菜单名称</th>
+                                <th>创建时间及操作人</th>
+                                <th>操作</th>
+                                </thead>
+                                <tbody>
+                                {{foreach $level_list as $level_info}}
+                                <tr>
+                                    <td class="cate-id">{{$level_info.id}}</td>
+                                    <td class="cate-level">
+                                        <span class="label label-primary">{{if $level_info.level == 1}}一{{else if $level_info.level == 2}}二{{else if $level_info.level == 3}}三{{/if}}级菜单</span>
+                                    </td>
+                                    <td class="cate-name">{{$level_info.name}}</td>
+                                    <td class="project-completion">
+                                        <small>{{$level_info.create_time|date_format:"%Y-%m-%d %H:%m:%S"}} by
+                                            {{$level_info.operater}}
+                                        </small>
+                                    </td>
+                                    <td>{{if $level < 3}}
+                                        <a href="{{'menu/level_list'|base_url}}?level={{$next_level}}&parent={{$level_info.id}}"
+                                           class="btn btn-primary btn-sm"><i class="fa fa-folder-open-o"></i>
+                                            设置下级菜单
+                                        </a>
+                                        {{/if}}
+                                        <a href="#edit-level" data-toggle="modal" class="btn btn-white btn-sm edit-btn"><i
+                                                class="fa fa-pencil"></i>
+                                            编辑
+                                        </a>
+                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm delete-btn"><i
+                                                class="fa fa-close"></i>
+                                            删除
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/foreach}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <button class="btn btn-primary make-categroy">生成菜单层级列表</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>商品菜单层级展示</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+
+            <div id="using_json"></div>
+
+        </div>
+    </div>
+</div>
+<div id="modal-form" class="modal fade" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="m-t-none m-b">添加商品菜单</h3>
+                        <form role="form" id="add-level" class="add-level" onsubmit="return false;">
+                            <div class="form-group">
+                                <label>菜单名称：</label>
+                                <input type="text" name="name" placeholder="请输入菜单名称"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group" style="display: none">
+                                <label>菜单级别：</label>
+                                <input type="text" name="level" placeholder="请输入菜单级别" class="form-control"
+                                       value="{{$level}}">
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <label>上级菜单名称：</label>
+                                <input type="text" name="parent" placeholder="请输入上级菜单名称" class="form-control"
+                                       value="{{$parent}}">
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="menu-level"
+                                        type="submit">
+                                    <strong>提交</strong>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="edit-level" class="modal fade" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="m-t-none m-b">修改商品菜单</h3>
+                        <form role="form" class="edit-level" onsubmit="return false;">
+                            <div class="form-group">
+                                <label>菜单名称：</label>
+                                <input type="text" name="name" placeholder="请输入菜单名称"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group" style="display: none">
+                                <label>菜单编号：</label>
+                                <input type="text" name="id" placeholder="请输入菜单级别" class="form-control">
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="edit-submit"
+                                        type="submit">
+                                    <strong>提交</strong>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .jstree-default .jstree-icon.none {
+        width: 0
+    }
+</style>
+<script type="application/javascript">
+    var url = "<script type='application/javascript' src=\"{{'file/category.js'|base_url}}?v=" + Math.random() + '\"><\/script>';
+    document.write(url);
+</script>
+<script>
+    $(document).ready(function () {
+        $(".add-btn").on("click", function () {
+            console.log($("#add-level").find("input[name='name']"));
+            $("#add-level").find("input[name='name']").trigger("click").focus();
+        });
+        $(".edit-btn").on("click", function () {
+            var id = $(this).parents("tr").find(".cate-id").text();
+            var name = $(this).parents("tr").find(".cate-name").text();
+            $("#edit-level").find("input[name='name']").val(name);
+            $("#edit-level").find("input[name='id']").val(id);
+        });
+        $(".delete-btn").on("click", function () {
+            var id = $(this).parents("tr").find(".cate-id").text();
+            layer.confirm('是否要删除当前菜单及其下属菜单？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                $.post("{{'menu/delete_level'|base_url}}", {id:id}, function (res) {
+                    if (res.ecode == 0) {
+                        layer.msg(res.result);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 500)
+                    }
+                    else {
+                        layer.msg(res.emsg);
+                    }
+                })
+            }, function(){
+            });
+        });
+        $("#edit-submit").on("click", function () {
+            $.post("{{'menu/edit_level'|base_url}}", $(".edit-level").serialize(), function (res) {
+                if (res.ecode == 0) {
+                    layer.msg(res.result);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500)
+                }
+                else {
+                    layer.msg(res.emsg);
+                }
+            });
+        });
+        $("#menu-level").on("click", function () {
+            $.post("{{'menu/add_level'|base_url}}", $(".add-level").serialize(), function (res) {
+                if (res.ecode == 0) {
+                    layer.msg(res.result);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500)
+                }
+                else {
+                    layer.msg(res.emsg);
+                }
+            });
+        });
+        $(".make-categroy").on("click", function () {
+
+            $.ajax({
+                url: "{{'menu/make_category'|base_url}}",
+                type: "post",
+                data: {},
+                beforeSend: function () {
+                    layer.load(1, {
+                        shade: [0.1, '#fff'] //0.1透明度的白色背景
+                    });
+                },
+                success: function (res) {
+                    if (res.ecode == 0) {
+                        window.location.reload();
+                    }
+                }
+            });
+        });
+        $("#using_json").jstree({
+            "core": {
+                "data": json
+            }
+        })
+    });
+</script>
