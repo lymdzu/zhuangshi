@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 文件名称:Memu.php
  * 摘    要:
@@ -6,9 +7,11 @@
  */
 class Menu extends AdController
 {
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
+
     /**
      * 微信菜单列表
      */
@@ -34,7 +37,15 @@ class Menu extends AdController
     {
         $name = $this->input->post("name", true);
         $level = $this->input->post("level", true);
+        $has_child = $this->input->post("has_child");
+        $href = $this->input->post("href");
         $parent = $this->input->post("parent", true);
+        $has_child = empty($has_child) ? 0 : ($has_child == 0 ? 0 : 1);
+        if ($has_child == 0) {
+            if (empty($href)) {
+                $this->json_result(LACK_REQUIRED_PARAMETER, "", "请输入微信菜单地址");
+            }
+        }
         if (empty($name)) {
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请输入微信菜单名称");
         }
@@ -46,7 +57,7 @@ class Menu extends AdController
         }
         $this->load->model("MenuModel", "menu", true);
         $operate = $this->session->userdata("admin_user");
-        $add_status = $this->menu->add_menu_type($name, $level, $parent, $operate);
+        $add_status = $this->menu->add_menu_type($name, $level, $has_child, $href, $parent, $operate);
         if ($add_status) {
             $this->json_result(REQUEST_SUCCESS, "微信菜单添加成功");
         } else {
@@ -61,6 +72,14 @@ class Menu extends AdController
     {
         $name = $this->input->post("name", true);
         $id = $this->input->post("id", true);
+        $has_child = $this->input->post("has_child");
+        $href = $this->input->post("href");
+        $has_child = empty($has_child) ? 0 : ($has_child == 0 ? 0 : 1);
+        if ($has_child == 0) {
+            if (empty($href)) {
+                $this->json_result(LACK_REQUIRED_PARAMETER, "", "请输入微信菜单地址");
+            }
+        }
         if (empty($name)) {
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请输入微信菜单名称");
         }
@@ -68,7 +87,7 @@ class Menu extends AdController
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "缺少需要修改的菜单id");
         }
         $this->load->model("MenuModel", "menu", true);
-        $edit_status = $this->menu->edit_menu_type($id, $name);
+        $edit_status = $this->menu->edit_menu_type($id, $name, $has_child, $href);
         if ($edit_status) {
             $this->json_result(REQUEST_SUCCESS, "微信菜单修改成功");
         } else {
@@ -93,6 +112,7 @@ class Menu extends AdController
             $this->json_result(API_ERROR, "", "服务器出错");
         }
     }
+
     /**
      * 重新生成商品类目
      */

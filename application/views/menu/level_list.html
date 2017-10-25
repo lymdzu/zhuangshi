@@ -28,12 +28,13 @@
                                         <span class="label label-primary">{{if $level_info.level == 1}}一{{else if $level_info.level == 2}}二{{else if $level_info.level == 3}}三{{/if}}级菜单</span>
                                     </td>
                                     <td class="cate-name">{{$level_info.name}}</td>
+                                    <td class="has_child" style="display: none;">{{$level_info.has_child}}</td>
                                     <td class="project-completion">
                                         <small>{{$level_info.create_time|date_format:"%Y-%m-%d %H:%m:%S"}} by
                                             {{$level_info.operater}}
                                         </small>
                                     </td>
-                                    <td>{{if $level < 3}}
+                                    <td>{{if $level < 2 && $level_info.has_child != 0}}
                                         <a href="{{'menu/level_list'|base_url}}?level={{$next_level}}&parent={{$level_info.id}}"
                                            class="btn btn-primary btn-sm"><i class="fa fa-folder-open-o"></i>
                                             设置下级菜单
@@ -53,28 +54,10 @@
                                 </tbody>
                             </table>
                         </div>
-                        <button class="btn btn-primary make-categroy">生成菜单层级列表</button>
+                        <button class="btn btn-primary make-categroy">生成微信菜单</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>商品菜单层级展示</h5>
-            <div class="ibox-tools">
-                <a class="collapse-link">
-                    <i class="fa fa-chevron-up"></i>
-                </a>
-                <a class="close-link">
-                    <i class="fa fa-times"></i>
-                </a>
-            </div>
-        </div>
-        <div class="ibox-content">
-
-            <div id="using_json"></div>
-
         </div>
     </div>
 </div>
@@ -84,11 +67,26 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="m-t-none m-b">添加商品菜单</h3>
+                        <h3 class="m-t-none m-b">添加微信菜单</h3>
                         <form role="form" id="add-level" class="add-level" onsubmit="return false;">
                             <div class="form-group">
                                 <label>菜单名称：</label>
                                 <input type="text" name="name" placeholder="请输入菜单名称"
+                                       class="form-control">
+                            </div>
+                            {{if $level != 2}}
+                            <div class="form-group">
+                                <label>是否有子菜单：</label>
+                                <select class="form-control" name="has_child">
+                                    <option>请选择</option>
+                                    <option value="1">是</option>
+                                    <option value="0">否</option>
+                                </select>
+                            </div>
+                            {{/if}}
+                            <div class="form-group div-href">
+                                <label>菜单链接地址：</label>
+                                <input type="text" name="href" value="" placeholder="请输入菜单链接地址"
                                        class="form-control">
                             </div>
                             <div class="form-group" style="display: none">
@@ -120,11 +118,26 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="m-t-none m-b">修改商品菜单</h3>
-                        <form role="form" class="edit-level" onsubmit="return false;">
+                        <h3 class="m-t-none m-b">修改微信菜单</h3>
+                        <form role="form" id="edit-form" class="edit-level" onsubmit="return false;">
                             <div class="form-group">
                                 <label>菜单名称：</label>
                                 <input type="text" name="name" placeholder="请输入菜单名称"
+                                       class="form-control">
+                            </div>
+                            {{if $level != 2}}
+                            <div class="form-group">
+                                <label>是否有子菜单：</label>
+                                <select class="form-control" name="has_child">
+                                    <option>请选择</option>
+                                    <option value="1">是</option>
+                                    <option value="0">否</option>
+                                </select>
+                            </div>
+                            {{/if}}
+                            <div class="form-group div-href">
+                                <label>菜单链接地址：</label>
+                                <input type="text" name="href" value="" placeholder="请输入菜单链接地址"
                                        class="form-control">
                             </div>
                             <div class="form-group" style="display: none">
@@ -150,10 +163,6 @@
         width: 0
     }
 </style>
-<script type="application/javascript">
-    var url = "<script type='application/javascript' src=\"{{'file/category.js'|base_url}}?v=" + Math.random() + '\"><\/script>';
-    document.write(url);
-</script>
 <script>
     $(document).ready(function () {
         $(".add-btn").on("click", function () {
@@ -163,15 +172,47 @@
         $(".edit-btn").on("click", function () {
             var id = $(this).parents("tr").find(".cate-id").text();
             var name = $(this).parents("tr").find(".cate-name").text();
+            var has_child = $(this).parents("tr").find(".has_child").text();
+            console.log(has_child);
             $("#edit-level").find("input[name='name']").val(name);
             $("#edit-level").find("input[name='id']").val(id);
+            $("#edit-level select[name='has_child'] option").each(function () {
+                if ($(this).val() == has_child) {
+                    console.log($(this).val());
+                    $(this).prop("selected", "selected");
+                    if (has_child == 1) {
+                        $("#edit-form .div-href").hide();
+                    }
+                }
+            })
+
+        });
+        $("#add-level select[name='has_child']").on("change", function () {
+            $("#add-level input[name='href']").val("");
+            if ($(this).val() == "1") {
+
+                $("#add-level .div-href").hide();
+            }
+            else {
+                $("#add-level .div-href").show();
+            }
+        });
+        $("#edit-form select[name='has_child']").on("change", function () {
+            $("#edit-form input[name='href']").val("");
+            if ($(this).val() == "1") {
+
+                $("#edit-form .div-href").hide();
+            }
+            else {
+                $("#edit-form .div-href").show();
+            }
         });
         $(".delete-btn").on("click", function () {
             var id = $(this).parents("tr").find(".cate-id").text();
             layer.confirm('是否要删除当前菜单及其下属菜单？', {
-                btn: ['确定','取消'] //按钮
-            }, function(){
-                $.post("{{'menu/delete_level'|base_url}}", {id:id}, function (res) {
+                btn: ['确定', '取消'] //按钮
+            }, function () {
+                $.post("{{'menu/delete_level'|base_url}}", {id: id}, function (res) {
                     if (res.ecode == 0) {
                         layer.msg(res.result);
                         setTimeout(function () {
@@ -182,7 +223,7 @@
                         layer.msg(res.emsg);
                     }
                 })
-            }, function(){
+            }, function () {
             });
         });
         $("#edit-submit").on("click", function () {
@@ -214,25 +255,18 @@
         $(".make-categroy").on("click", function () {
 
             $.ajax({
-                url: "{{'menu/make_category'|base_url}}",
+                url: "{{'weixin/createmenu'|base_url}}",
                 type: "post",
                 data: {},
-                beforeSend: function () {
-                    layer.load(1, {
-                        shade: [0.1, '#fff'] //0.1透明度的白色背景
-                    });
-                },
                 success: function (res) {
                     if (res.ecode == 0) {
-                        window.location.reload();
+                        layer.msg(res.result);
+                    }
+                    else {
+                        layer.msg(res.emsg);
                     }
                 }
             });
         });
-        $("#using_json").jstree({
-            "core": {
-                "data": json
-            }
-        })
     });
 </script>

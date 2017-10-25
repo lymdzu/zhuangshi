@@ -78,9 +78,11 @@ class Wechat
         $this->access_token = $re1["access_token"];
         $CI = get_instance();
         $CI->load->model('UserModel', 'user', true);
+        $now = time();
+        $account = QIUKONG_APPID;
         $wxdb = $CI->user;
         if ($appid == QIUKONG_APPID) {
-            $wxdb->query("INSERT INTO access_token (account, token, create_time) VALUES ('qiukong', $this->access_token, {time()}) ON DUPLICATE KEY UPDATE token = $this->access_token, create_time={time()}");
+            $wxdb->db->query("INSERT INTO t_access_token (account, access_token, create_time) VALUES ('{$account}', '{$this->access_token}', '{$now}') ON DUPLICATE KEY UPDATE access_token = '{$this->access_token}', create_time='{$now}'");
             $rows = $wxdb->db->affected_rows();
             log_message('info', "[refreshAccessToken]:" . "update_access_token, affected_rows:{$rows}, appid:{$this->appid },accessToken:{$this->access_token}");
         }
@@ -235,25 +237,15 @@ class Wechat
     {
         if (!$this->access_token) {
             $CI = get_instance();
-            $CI->load->model('Userinfo', 'user', true);
+            $CI->load->model('UserModel', 'user', true);
             $wxdb = $CI->user;
-            if ($this->appid == TEEGON_APPID) {
-                $wxdb->db->where("id", 1);
-                $query = $wxdb->db->get("wx_access_token");
-                $data = $query->row();
-            } elseif ($this->appid == MAFU_APPID) {
-                $wxdb->db->where("id", 3);
-                $query = $wxdb->db->get("wx_access_token");
-                $data = $query->row();
-            } elseif ($this->appid == FULI_APPID) {
-                $wxdb->db->where("id", 2);
-                $query = $wxdb->db->get("wx_access_token");
-                $data = $query->row();
-            }
-            if ((time() - $data->created > 600) || !$data->token) {
+            $wxdb->db->where("account", QIUKONG_APPID);
+            $query = $wxdb->db->get("t_access_token");
+            $data = $query->row();
+            if ((time() - $data->create_time > 7200) || !$data->access_token) {
                 $this->refreshAccessToken();
             } else {
-                $this->access_token = $data->token;
+                $this->access_token = $data->access_token;
             }
         }
 

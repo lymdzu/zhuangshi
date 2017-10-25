@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 文件名称:MenuModel.php
  * 摘    要:
@@ -34,21 +35,24 @@ class MenuModel extends MY_Model
         if ($parent) {
             $this->db->where("parent", $parent);
         }
+        $this->db->order_by("id", "ASC");
         $query = $this->db->get("t_type");
         return $query->result_array();
     }
 
     /**
-     * 添加商品分类
+     * 添加微信菜单
      * @param $name
      * @param $level
+     * @param $has_child
+     * @param $href
      * @param $parent
      * @param $operater
      * @return bool
      */
-    public function add_menu_type($name, $level, $parent, $operater)
+    public function add_menu_type($name, $level, $has_child, $href, $parent, $operater)
     {
-        $insert_status = $this->db->insert("t_type", array("name" => $name, "level" => $level, "parent" => $parent, "create_time" => time(), "operater" => $operater));
+        $insert_status = $this->db->insert("t_type", array("name" => $name, "level" => $level, "has_child" => $has_child, "href" => $href, "parent" => $parent, "create_time" => time(), "operater" => $operater));
         $affect_rows = $this->db->affected_rows();
         if ($insert_status && $affect_rows == 1) {
             return true;
@@ -58,15 +62,17 @@ class MenuModel extends MY_Model
     }
 
     /**
-     * 修改商户分类名称
+     * 修改微信菜单
      * @param $id
      * @param $name
+     * @param $has_child
+     * @param $href
      * @return bool
      */
-    public function edit_menu_type($id, $name)
+    public function edit_menu_type($id, $name, $has_child, $href)
     {
         $this->db->where("id", $id);
-        $update_status = $this->db->update("t_type", array("name" => $name));
+        $update_status = $this->db->update("t_type", array("name" => $name, "has_child" => $has_child, "href" => $href));
         $affect_rows = $this->db->affected_rows();
         if ($update_status && $affect_rows == 1) {
             return true;
