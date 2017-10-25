@@ -9,7 +9,7 @@ class Wxnotify extends PublicController
 {
     public function __construct()
     {
-        require_once APPPATH . "helpers/Wechat.php";
+        require_once APPPATH . "helpers/wechat.php";
         parent::__construct();
     }
 
