@@ -36,6 +36,8 @@ class Wechat
     {
         $this->appid = isset($options['appid']) ? $options['appid'] : '';
         $this->appsecret = isset($options['appsecret']) ? $options['appsecret'] : '';
+        $this->token = isset($options['token']) ? $options['token'] : '';
+        $this->encodingAesKey = isset($options['encodingaeskey']) ? $options['encodingaeskey'] : '';
     }
 
     /**
