@@ -2107,6 +2107,8 @@ body{color:rgba(31,37,38,.75)}
 .do-html-content>*:first-child,.do-blocks:first-child {margin-top: 0}
 .do-html-content>*:last-child,.do-blocks:last-child {margin-bottom: 0}
 .do-html-content>* {word-wrap: break-word;}
+.do-html-content h1{font-size: 2rem; font-weight: 400}
+.do-html-content p{font-size: 1.5rem; font-weight: 300}
 .do-slide-text p{line-height: 1.1;margin-top: 6px;margin-bottom: 6px}
 
 /**/
@@ -2309,7 +2311,7 @@ h6,.ui-txt-tips{font-size:14px}
 .do-element-media .do-media-body{padding-top:1em}
 .do-element-media.num1 .do-element-media-li,.num1 .do-element-list-item{width: 100%}
 .do-element-media.num2 .do-element-media-li,.num2 .do-element-list-item{width: 50%}
-.do-element-media.num3 .do-element-media-li,.num3 .do-element-list-item{width: 33.333333333333333%}
+.do-element-media.num3 .do-element-media-li,.num3 .do-element-list-item{width: 33.333333333333333%;height: 40rem}
 .do-element-media.num4 .do-element-media-li,.num4 .do-element-list-item{width: 25%}
 .do-element-media.num5 .do-element-media-li,.num5 .do-element-list-item{width: 20%}
 .do-element-media.num6 .do-element-media-li,.num6 .do-element-list-item{width: 16.666666666666666%}
@@ -2326,7 +2328,7 @@ h6,.ui-txt-tips{font-size:14px}
 .do-element-media-content.md ul li{padding:12px;}
 .do-element-media-content.lg ul li{padding:16px;}
 
-.do-media-image{position: relative;padding-top: 62%}
+.do-media-image{position: relative;}
 .do-media-image-conter{position: absolute;top: 0;left: 0;right: 0;bottom: 0;overflow: hidden}
 .do-element-media .do-block-image{position:inherit;width: 100%;left: inherit;top: inherit;}
 .do-media-body h2{color: inherit}
