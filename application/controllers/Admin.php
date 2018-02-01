@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 文件名称:Admin.php
  * 摘    要:
@@ -6,9 +7,15 @@
  */
 class Admin extends AdController
 {
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
+
+    /**
+     * 展示后台页面
+     * @author
+     */
     public function index()
     {
         $this->load->model("UserModel", "user", true);
@@ -22,6 +29,10 @@ class Admin extends AdController
         $this->page("admin/index.html");
     }
 
+    /**
+     * 添加管理员方法
+     * @author
+     */
     public function add_user()
     {
         $username = $this->input->post("user-name", true);
@@ -41,6 +52,10 @@ class Admin extends AdController
         }
     }
 
+    /**
+     * 操作管理员
+     * @author
+     */
     public function operate_admin()
     {
         $id = $this->input->post("id", true);

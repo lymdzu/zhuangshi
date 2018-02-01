@@ -118,3 +118,5 @@ defined('DELETE_DB_ERROR')             OR define("DELETE_DB_ERROR", 500008);//�
 defined('WRITE_FILE_ERROR')            OR define("WRITE_FILE_ERROR", 403301);//文件写入失败
 defined('OPERATE_DENY')                OR define('OPERATE_DENY', 403001);//无权操作
 defined('VERIFY_FAILED')               OR define('VERIFY_FAILED', 403403);//仅仅用于token签名验证失败,不可用作其他用途
+
+defined('PAGESIZE')                    OR define('PAGESIZE', 20);//页面数量
