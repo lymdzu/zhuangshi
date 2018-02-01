@@ -16,6 +16,7 @@ class CompanyModel extends MY_Model
     public function get_style_list()
     {
         $this->db->where("status", 1);
+        $this->db->order_by("create_time", "desc");
         $query = $this->db->get("t_case");
         return $query->result_array();
     }

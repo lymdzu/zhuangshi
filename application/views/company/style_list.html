@@ -31,31 +31,19 @@
                                                 {{foreach $style_list as $style}}
                                                 <tr>
                                                     <td class="client-avatar">
-                                                        {{$style.style_id}}
+                                                        {{$style.id}}
                                                     </td>
                                                     <td>
                                                         <a data-toggle="tab" href="#contact-1" class="client-link">{{$style.name}}</a>
                                                     </td>
                                                     <td>
+                                                        <a data-toggle="tab" href="#contact-1" class="client-link">{{$style.desc}}</a>
+                                                    </td>
+                                                    <td>
                                                         {{$style.create_time|date_format:"%Y-%m-%d %H:%m:%S"}}
                                                     </td>
                                                     <td>
-                                                        {{if $style.login_time == 0}}
-                                                        从未登录
-                                                        {{else}}
-                                                        {{$style.login_time|date_format:"%Y-%m-%d %H:%m:%S"}}
-                                                        {{/if}}
-                                                    </td>
-                                                    <td class="client-status">
-                                                        <span class="label {{if $style.user_status == 0}}label-primary{{elseif $style.user_status ==1}}label-danger{{/if}}">{{if $style.user_status == 0}}正常{{elseif $style.user_status ==1}}已禁止{{/if}}</span>
-                                                    </td>
-                                                    <td>
-                                                        <button data-id="{{$style.style_id}}"
-                                                                data-status="{{$style.user_status}}"
-                                                                class="btn btn-xs {{if $style.user_status == 0}}btn-danger{{elseif $style.user_status == 1}}btn-primary{{/if}} operate">
-                                                            {{if $style.user_status == 0}}禁用{{elseif $style.user_status
-                                                            ==1}}启用{{/if}}
-                                                        </button>
+                                                        <a class="btn btn-primary" href="{{'company/style_pic'|base_url}}">上传图片</a>
                                                     </td>
                                                 </tr>
                                                 {{/foreach}}

@@ -34,13 +34,22 @@ class Company extends AdController
     }
 
     /**
+     * 上传案例图片
+     * @author
+     */
+    public function style_pic()
+    {
+        $this->page("company/style_pic.html");
+    }
+
+    /**
      * 添加设计风格
-     * @author liuyongming@shopex.cn
+     * @author
      */
     public function add_style()
     {
-        $style_name = $this->input->post("name");
-        $style_desc = $this->input->post("desc");
+        $style_name = trim($this->input->post("name"));
+        $style_desc = trim($this->input->post("desc"));
         if (empty($style_name)) {
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计风格名称");
         }
