@@ -51,6 +51,9 @@ class Home extends PublicController
      */
     public function classic_case()
     {
+        $this->load->model("CompanyModel", "company", true);
+        $exams = $this->company->get_case_example();
+        $this->vars["exams"] = $exams;
         $this->vars['page'] = "case";
         $this->page("case.html");
     }

@@ -12,6 +12,8 @@ application/config/config.php
 application/config/database.php
 
 composer.lock
+public/upload/*
+!public/upload/
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*

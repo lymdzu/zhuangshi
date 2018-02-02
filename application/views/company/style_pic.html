@@ -1,3 +1,18 @@
+<style>
+    .pic-cont{
+        position: relative;
+    }
+    .center-btn{
+        position: absolute;
+        top:50%;
+        left: 35%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        opacity: 0.7;
+        z-index: 1000;
+    }
+</style>
 <div class="row">
     <div class="col-sm-12">
         <div id="uploader" class="wu-example  col-sm-6">
@@ -23,81 +38,20 @@
     <div class="col-sm-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Fancybox
-                    <small>http://fancybox.net/</small>
+                <h5>案例图片
                 </h5>
-                <div class="ibox-tools">
-                    <a class="collapse-link">
-                        <i class="fa fa-chevron-up"></i>
-                    </a>
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="basic_gallery.html#">
-                        <i class="fa fa-wrench"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li>
-                            <a href="basic_gallery.html#">选项1</a>
-                        </li>
-                        <li>
-                            <a href="basic_gallery.html#">选项2</a>
-                        </li>
-                    </ul>
-                    <a class="close-link">
-                        <i class="fa fa-times"></i>
-                    </a>
-                </div>
             </div>
-            <div class="ibox-content">
-
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p1.jpg" title="图片1">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big1.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p2.jpg" title="图片2">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big2.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p3.jpg" title="图片3">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big3.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p1.jpg" title="图片4">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big1.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p2.jpg" title="图片5">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big2.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p3.jpg" title="图片6">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big3.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p1.jpg" title="图片7">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big1.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p2.jpg" title="图片8">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big2.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p1.jpg" title="图片9">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big1.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p2.jpg" title="图片10">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big2.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p3.jpg" title="图片11">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big3.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p1.jpg" title="图片12">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big1.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p2.jpg" title="图片13">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big2.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p3.jpg" title="图片14">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big3.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p1.jpg" title="图片15">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big1.jpg"/>
-                </a>
-                <a class="fancybox" href="http://ozwpnu2pa.bkt.clouddn.com/p2.jpg" title="图片16">
-                    <img alt="image" src="http://ozwpnu2pa.bkt.clouddn.com/p_big2.jpg"/>
-                </a>
-
-
+            <div class="ibox-content ">
+                {{foreach $pics as $pic}}
+                    <a class="fancybox pic-cont" href="{{'upload/file/'|base_url}}{{$pic.pic}}" title="{{$pic.pic}}">
+                        <img alt="image" src="{{'upload/file/'|base_url}}{{$pic.pic}}"/>
+                        {{if $pic.is_default != 1}}
+                        <button class="btn btn-info btn-xs center-btn set_default" data-picid="{{$pic.id}}" data-caseid="{{$pic.case_id}}">设置为默认</button>
+                        {{else}}
+                        <button class="btn btn-primary center-btn" data-picid="{{$pic.id}}" data-caseid="{{$pic.case_id}}">封面默认图片</button>
+                        {{/if}}
+                    </a>
+                {{/foreach}}
             </div>
         </div>
     </div>
@@ -106,6 +60,22 @@
 <script>
     $(document).ready(function () {
         $(".fancybox").fancybox({openEffect: "none", closeEffect: "none"})
+        $(".set_default").on("click", function (e) {
+            var pic_id = $(this).data("picid");
+            var case_id = $(this).data("caseid");
+            $.post("{{'company/set_default_pic'|base_url}}", {pic_id:pic_id,case_id:case_id}, function (res) {
+                if (res.ecode == 0) {
+                    layer.msg(res.result);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1500);
+                }
+                else {
+                    layer.msg(res.emsg);
+                }
+            });
+            return false;
+        })
     });
     function e(e) {
         var a = o('<li id="' + e.id + '"><p class="title">' + e.name + '</p><p class="imgWrap"></p><p class="progress"><span></span></p></li>'), s = o('<div class="file-panel"><span class="cancel">删除</span><span class="rotateRight">向右旋转</span><span class="rotateLeft">向左旋转</span></div>').appendTo(a), i = a.find("p.progress span"), t = a.find("p.imgWrap"), r = o('<p class="error"></p>'), d = function (e) {
@@ -191,9 +161,9 @@
                     a = n.getStats();
                     if (a.successNum) {
                         layer.msg("Upload success");
-//                            setTimeout(function () {
-//                                window.location.reload();
-//                            }, 1000)
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1000)
                     }
             }
             i()
@@ -212,7 +182,10 @@
         swf: "{{'static/bsjs/plugins/webuploader/Uploader.swf'|base_url}}",
         disableGlobalDnd: !0,
         chunked: !0,
-        server: "{{'admin/new_pic'|base_url}}",
+        server: "{{'company/case_pic'|base_url}}",
+        formData: {
+            case_id: "{{$case_id}}"
+        }
     }), n.addButton({id: "#filePicker2", label: "继续添加"}), n.onUploadProgress = function (e, a) {
         var i = o("#" + e.id), t = i.find(".progress span");
         t.css("width", 100 * a + "%"), w[e.id][1] = a, s()

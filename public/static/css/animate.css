@@ -758,7 +758,10 @@ img{max-width: 100%;
 
 
 .do-area{position: relative;}
-.do-area-bg,.do-slide-bg{position: absolute;z-index: 1;top: 0;left: 0;bottom: 0;right: 0;overflow: hidden}
+.do-area.page-footer{
+    background: #f3f1ef;
+}
+.do-area-bg,.do-slide-bg{position: absolute;z-index: 1;top: 0;left: 0;bottom: 0;right: 0;overflow: hidden;}
 .do-area,.do-area-bg-conter,.do-slide-bg-conter{background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;behavior: url(/backgroundsize.htc);-ms-behavior: url(/backgroundsize.htc);}
 .do-area-bg-conter,.do-slide-bg-conter{position:absolute;top:-20px;left:-20px;bottom:-20px;right:-20px;}
 .do-area-videobg .do-area-bg-conter{left: 0;right: 0;bottom: 0;top: 0;}
@@ -2311,7 +2314,7 @@ h6,.ui-txt-tips{font-size:14px}
 .do-element-media .do-media-body{padding-top:1em}
 .do-element-media.num1 .do-element-media-li,.num1 .do-element-list-item{width: 100%}
 .do-element-media.num2 .do-element-media-li,.num2 .do-element-list-item{width: 50%}
-.do-element-media.num3 .do-element-media-li,.num3 .do-element-list-item{width: 33.333333333333333%;height: 40rem}
+.do-element-media.num3 .do-element-media-li,.num3 .do-element-list-item{width: 33.333333333333333%;margin-bottom: 2rem}
 .do-element-media.num4 .do-element-media-li,.num4 .do-element-list-item{width: 25%}
 .do-element-media.num5 .do-element-media-li,.num5 .do-element-list-item{width: 20%}
 .do-element-media.num6 .do-element-media-li,.num6 .do-element-list-item{width: 16.666666666666666%}

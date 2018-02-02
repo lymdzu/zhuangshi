@@ -1,15 +1,9 @@
 <?php
 
-/**
- * 文件名称:CompanyModel.php
- * 摘    要:
- * 修改日期: 2018/2/1
- * 作    者:
- */
 class CompanyModel extends MY_Model
 {
     /**
-     * 获取设计案例列表
+     * 鑾峰彇妗堜緥鍒楄〃
      * @return mixed
      * @author
      */
@@ -22,7 +16,7 @@ class CompanyModel extends MY_Model
     }
 
     /**
-     * 添加保存设计案例
+     * 娣诲姞妗堜緥
      * @param $name
      * @param $desc
      * @return bool
@@ -38,5 +32,64 @@ class CompanyModel extends MY_Model
         } else {
             return false;
         }
+    }
+
+    /**
+     * 娣诲姞妗堜緥鍥剧墖
+     * @param $case_id
+     * @param $filename
+     * @return bool
+     * @auther liuyongming@shopex.cn
+     */
+    public function save_case_pic($case_id, $filename)
+    {
+        $pic = array("case_id" => $case_id, "pic" => $filename, "create_time" => time(), "status" => 1);
+        $insert_status = $this->db->insert("t_case_pic", $pic);
+        $row = $this->db->affected_rows();
+        if ($insert_status && $row > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 鑾峰彇妗堜緥鍥剧墖
+     * @param $case_id
+     * @return mixed
+     * @auther liuyongming@shopex.cn
+     */
+    public function get_case_pics($case_id)
+    {
+        $this->db->where("case_id", $case_id);
+        $query = $this->db->get("t_case_pic");
+        return $query->result_array();
+    }
+
+    /**
+     * 璁剧疆榛樿鍥剧墖
+     * @param $case_id
+     * @param $pic_id
+     * @return bool
+     * @auther liuyongming@shopex.cn
+     */
+    public function set_default_pic($case_id, $pic_id)
+    {
+        $this->db->trans_start();
+        $this->db->where("case_id", $case_id);
+        $this->db->update("t_case_pic", array("is_default" => 0));
+        $this->db->where(array("case_id" => $case_id, "id" => $pic_id));
+        $this->db->update("t_case_pic", array("is_default" => 1));
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === false) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public function get_case_example()
+    {
+        $query = $this->db->query("select * from t_case as c LEFT JOIN t_case_pic as p ON p.case_id = c.id WHERE p.is_default=1");
+        return $query->result_array();
     }
 }
