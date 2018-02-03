@@ -1,8 +1,9 @@
+{{foreach $pics as $pic}}
 <div class="do-section fp-auto-height do-banner" data-fullname="BANNER">
-    <div class="do-area do-area-fullHeight" id="banner_17138_0">
+    <div class="do-area do-area-fullHeight" >
         <div class="do-area-bg ">
             <div class="do-area-bg-conter"
-                 style="background-image: url('http://image.styleweb.cn/2016/06/22/11634cb1ca829c5dc9bfbc7cd7117d0f.jpeg?imageMogr2/thumbnail/2000x2000/q/100');background-attachment:">
+                 style="background-image: url({{'upload/file/'|base_url}}{{$pic.pic}});background-attachment:">
                 <div class="bgcolor"></div>
             </div>
         </div>
@@ -14,420 +15,109 @@
                             <div class="do-element-space" style="padding-top:25%;"></div>
                         </div>
                         <div class="do-block do-rows">
-                            <div class="do-row">
-                                <div class="do-col-2">
-                                    <div class="do-panelcol">
-                                        <div class="do-block do-text do-245ao">
-                                            <div class="do-element-text do-element-general">
-                                                <div class="do-element-text-content do-html">
-                                                    <div class="do-html-content"><p><span
-                                                            style="color: rgb(255, 255, 255);"><span
-                                                            style="font-size: 24px;"><strong>客户:</strong></span></span>
-                                                    </p>
-                                                        <p><span style="color: rgb(255, 255, 255);"><span
-                                                                style="font-size: 24px;"><strong>Jeffrey公司</strong></span></span>
-                                                        </p></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="do-col-10">
-                                    <div class="do-panelcol">
-                                        <div class="do-block do-rows">
-                                            <div class="do-row">
-                                                <div class="do-col-2">
-                                                    <div class="do-panelcol">
-                                                        <div class="do-block do-text do-245an">
-                                                            <div class="do-element-text do-element-general">
-                                                                <div class="do-element-text-content do-html">
-                                                                    <div class="do-html-content"><p><span
-                                                                            style="color: rgb(255, 255, 255);"><span
-                                                                            style="font-size: 24px;"><strong>社区:</strong></span></span>
-                                                                    </p>
-                                                                        <p><span
-                                                                                style="color: rgb(255, 255, 255);"><span
-                                                                                style="font-size: 24px;"><strong>曼哈顿</strong></span></span>
-                                                                        </p></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="do-col-8">
-                                                    <div class="do-panelcol">
-                                                        <div class="do-block do-text do-245am">
-                                                            <div class="do-element-text do-element-general">
-                                                                <div class="do-element-text-content do-html">
-                                                                    <div class="do-html-content"><p><span
-                                                                            style="color: rgb(255, 255, 255);"><span
-                                                                            style="font-size: 24px;"><strong>时间:</strong></span></span>
-                                                                    </p>
-                                                                        <p><span
-                                                                                style="color: rgb(255, 255, 255);"><span
-                                                                                style="font-size: 24px;"><strong>2014年</strong></span></span>
-                                                                        </p></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!--<div class="do-row">-->
+                                <!--<div class="do-col-2">-->
+                                    <!--<div class="do-panelcol">-->
+                                        <!--<div class="do-block do-text do-245ao">-->
+                                            <!--<div class="do-element-text do-element-general">-->
+                                                <!--<div class="do-element-text-content do-html">-->
+                                                    <!--<div class="do-html-content"><p><span-->
+                                                            <!--style="color: rgb(255, 255, 255);"><span-->
+                                                            <!--style="font-size: 24px;"><strong>客户:</strong></span></span>-->
+                                                    <!--</p>-->
+                                                        <!--<p><span style="color: rgb(255, 255, 255);"><span-->
+                                                                <!--style="font-size: 24px;"><strong>Jeffrey公司</strong></span></span>-->
+                                                        <!--</p></div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="do-col-10">-->
+                                    <!--<div class="do-panelcol">-->
+                                        <!--<div class="do-block do-rows">-->
+                                            <!--<div class="do-row">-->
+                                                <!--<div class="do-col-2">-->
+                                                    <!--<div class="do-panelcol">-->
+                                                        <!--<div class="do-block do-text do-245an">-->
+                                                            <!--<div class="do-element-text do-element-general">-->
+                                                                <!--<div class="do-element-text-content do-html">-->
+                                                                    <!--<div class="do-html-content"><p><span-->
+                                                                            <!--style="color: rgb(255, 255, 255);"><span-->
+                                                                            <!--style="font-size: 24px;"><strong>社区:</strong></span></span>-->
+                                                                    <!--</p>-->
+                                                                        <!--<p><span-->
+                                                                                <!--style="color: rgb(255, 255, 255);"><span-->
+                                                                                <!--style="font-size: 24px;"><strong>曼哈顿</strong></span></span>-->
+                                                                        <!--</p></div>-->
+                                                                <!--</div>-->
+                                                            <!--</div>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <!--<div class="do-col-8">-->
+                                                    <!--<div class="do-panelcol">-->
+                                                        <!--<div class="do-block do-text do-245am">-->
+                                                            <!--<div class="do-element-text do-element-general">-->
+                                                                <!--<div class="do-element-text-content do-html">-->
+                                                                    <!--<div class="do-html-content"><p><span-->
+                                                                            <!--style="color: rgb(255, 255, 255);"><span-->
+                                                                            <!--style="font-size: 24px;"><strong>时间:</strong></span></span>-->
+                                                                    <!--</p>-->
+                                                                        <!--<p><span-->
+                                                                                <!--style="color: rgb(255, 255, 255);"><span-->
+                                                                                <!--style="font-size: 24px;"><strong>2014年</strong></span></span>-->
+                                                                        <!--</p></div>-->
+                                                                <!--</div>-->
+                                                            <!--</div>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
                         </div>
                         <div class="do-block do-space do-245aq">
                             <div class="do-element-space" style="padding-top:1.3333333333333335%;"></div>
                         </div>
-                        <div class="do-block do-text do-245ap">
-                            <div class="do-element-text do-element-general">
-                                <div class="do-element-text-content do-html">
-                                    <div class="do-html-content"><p style="line-height: 1.2;"><span
-                                            style="color: rgb(255, 255, 255);"><span style="font-size: 16px;">我们团队的商业游说团体变成一个大空间拥有16英尺的天花板上装了一个宁静石灰岩飞地。</span></span>
-                                    </p>
-                                        <p style="line-height: 1.2;"><span
-                                                style="color: rgb(255, 255, 255);"><span
-                                                style="font-size: 16px;">磨练和纹理的石灰石由线性湾照明强调,作为削减在天花板和墙壁。</span></span>
-                                        </p>
-                                        <p style="line-height: 1.2;"><span
-                                                style="color: rgb(255, 255, 255);"><span
-                                                style="font-size: 16px;">战略画天花板滴眼液新位于中心接待处裹在抛光大理石,玉石马赛克。&nbsp;</span></span>
-                                        </p>
-                                        <p style="line-height: 1.2;"><span
-                                                style="color: rgb(255, 255, 255);"><span
-                                                style="font-size: 16px;">温暖的调色板选择对比斯多葛派的颜色通常与商业空间相关联。&nbsp;</span></span>
-                                        </p>
-                                        <p style="line-height: 1.2;"><span
-                                                style="color: rgb(255, 255, 255);"><span
-                                                style="font-size: 16px;">为了达到所需的温暖,同时保持其作为企业空间,经典的材料,如磨练石灰岩被清洁并列,现代的线条。&nbsp;</span></span>
-                                        </p>
-                                        <p style="line-height: 1.2;"><span
-                                                style="color: rgb(255, 255, 255);"><span
-                                                style="font-size: 16px;">海豚湾照明在天花板上加上金色,hand-applied威尼斯灰泥增加戏剧和深度空间,同时保持中立的调色板的宁静感觉。</span></span>
-                                        </p></div>
-                                </div>
-                            </div>
-                        </div>
+                        <!--<div class="do-block do-text do-245ap">-->
+                            <!--<div class="do-element-text do-element-general">-->
+                                <!--<div class="do-element-text-content do-html">-->
+                                    <!--<div class="do-html-content"><p style="line-height: 1.2;"><span-->
+                                            <!--style="color: rgb(255, 255, 255);"><span style="font-size: 16px;">我们团队的商业游说团体变成一个大空间拥有16英尺的天花板上装了一个宁静石灰岩飞地。</span></span>-->
+                                    <!--</p>-->
+                                        <!--<p style="line-height: 1.2;"><span-->
+                                                <!--style="color: rgb(255, 255, 255);"><span-->
+                                                <!--style="font-size: 16px;">磨练和纹理的石灰石由线性湾照明强调,作为削减在天花板和墙壁。</span></span>-->
+                                        <!--</p>-->
+                                        <!--<p style="line-height: 1.2;"><span-->
+                                                <!--style="color: rgb(255, 255, 255);"><span-->
+                                                <!--style="font-size: 16px;">战略画天花板滴眼液新位于中心接待处裹在抛光大理石,玉石马赛克。&nbsp;</span></span>-->
+                                        <!--</p>-->
+                                        <!--<p style="line-height: 1.2;"><span-->
+                                                <!--style="color: rgb(255, 255, 255);"><span-->
+                                                <!--style="font-size: 16px;">温暖的调色板选择对比斯多葛派的颜色通常与商业空间相关联。&nbsp;</span></span>-->
+                                        <!--</p>-->
+                                        <!--<p style="line-height: 1.2;"><span-->
+                                                <!--style="color: rgb(255, 255, 255);"><span-->
+                                                <!--style="font-size: 16px;">为了达到所需的温暖,同时保持其作为企业空间,经典的材料,如磨练石灰岩被清洁并列,现代的线条。&nbsp;</span></span>-->
+                                        <!--</p>-->
+                                        <!--<p style="line-height: 1.2;"><span-->
+                                                <!--style="color: rgb(255, 255, 255);"><span-->
+                                                <!--style="font-size: 16px;">海豚湾照明在天花板上加上金色,hand-applied威尼斯灰泥增加戏剧和深度空间,同时保持中立的调色板的宁静感觉。</span></span>-->
+                                        <!--</p></div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="do-section do-area do-area-fullHeight" id="area_17138_0" data-fullname="">
-    <div class="do-area-bg ">
-        <div class="do-area-bg-conter"
-             style="background-image: url('http://image.styleweb.cn/2016/06/22/d4143ddb48cb4ce9671356909d7e1577.jpe?imageMogr2/thumbnail/2000x2000/q/100');background-attachment:">
-            <div class="bgcolor"></div>
-        </div>
-    </div>
-    <div id="area_0" class="do-row do-row-one ">
-        <div class="do-row ">
-            <div class="do-col-12">
-                <div class="do-panelcol">
-                    <div class="do-block do-space do-245al">
-                        <div class="do-element-space" style="padding-top:25%;"></div>
-                    </div>
-                    <div class="do-block do-rows">
-                        <div class="do-row">
-                            <div class="do-col-2">
-                                <div class="do-panelcol">
-                                    <div class="do-block do-text do-245ai">
-                                        <div class="do-element-text do-element-general">
-                                            <div class="do-element-text-content do-html">
-                                                <div class="do-html-content"><p><span
-                                                        style="color: rgb(255, 255, 255);"><span
-                                                        style="font-size: 24px;"><strong>客户:</strong></span></span>
-                                                </p>
-                                                    <p><span style="color: rgb(255, 255, 255);"><span
-                                                            style="font-size: 24px;"><strong><strong>Jeffrey公司</strong></strong></span></span>
-                                                    </p></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="do-col-2">
-                                <div class="do-panelcol">
-                                    <div class="do-block do-text do-245as">
-                                        <div class="do-element-text do-element-general">
-                                            <div class="do-element-text-content do-html">
-                                                <div class="do-html-content"><p><span
-                                                        style="color: rgb(255, 255, 255);"><span
-                                                        style="font-size: 24px;"><strong>社区:</strong></span></span>
-                                                </p>
-                                                    <p><span style="color: rgb(255, 255, 255);"><span
-                                                            style="font-size: 24px;"><strong><strong><strong>曼哈顿</strong></strong></strong></span></span>
-                                                    </p></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="do-col-8">
-                                <div class="do-panelcol">
-                                    <div class="do-block do-text do-245at">
-                                        <div class="do-element-text do-element-general">
-                                            <div class="do-element-text-content do-html">
-                                                <div class="do-html-content"><p><span
-                                                        style="color: rgb(255, 255, 255);"><span
-                                                        style="font-size: 24px;"><strong>时间:</strong></span></span>
-                                                </p>
-                                                    <p><span style="color: rgb(255, 255, 255);"><span
-                                                            style="font-size: 24px;"><strong>2014年</strong></span></span>
-                                                    </p></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="do-block do-space do-245ak">
-                        <div class="do-element-space" style="padding-top:1.3333333333333335%;"></div>
-                    </div>
-                    <div class="do-block do-text do-245ah">
-                        <div class="do-element-text do-element-general">
-                            <div class="do-element-text-content do-html">
-                                <div class="do-html-content"><p style="line-height: 1.2;"><span
-                                        style="color: rgb(255, 255, 255);"><span style="font-size: 16px;">我们团队的商业游说团体变成一个大空间拥有16英尺的天花板上装了一个宁静石灰岩飞地。&nbsp;</span></span>
-                                </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">磨练和纹理的石灰石由线性湾照明强调,作为削减在天花板和墙壁。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">战略画天花板滴眼液新位于中心接待处裹在抛光大理石,玉石马赛克。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">温暖的调色板选择对比斯多葛派的颜色通常与商业空间相关联。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">为了达到所需的温暖,同时保持其作为企业空间,经典的材料,如磨练石灰岩被清洁并列,现代的线条。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">海豚湾照明在天花板上加上金色,hand-applied威尼斯灰泥增加戏剧和深度空间,同时保持中立的调色板的宁静感觉。</span></span>
-                                    </p></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="do-block do-space do-245aj">
-                        <div class="do-element-space" style="padding-top:1.6666666666666667%;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="do-section do-area do-area-fullHeight" id="area_17138_1" data-fullname="">
-    <div class="do-area-bg ">
-        <div class="do-area-bg-conter"
-             style="background-image: url('http://image.styleweb.cn/2016/06/22/9d1a7410ddc71094afde6b248c9d876b.jpe?imageMogr2/thumbnail/2000x2000/q/100');background-attachment:">
-            <div class="bgcolor"></div>
-        </div>
-    </div>
-    <div id="area_1" class="do-row do-row-one ">
-        <div class="do-row ">
-            <div class="do-col-12">
-                <div class="do-panelcol">
-                    <div class="do-block do-space do-240u8">
-                        <div class="do-element-space" style="padding-top:25%;"></div>
-                    </div>
-                    <div class="do-block do-rows">
-                        <div class="do-row">
-                            <div class="do-col-2">
-                                <div class="do-panelcol">
-                                    <div class="do-block do-text do-240u7">
-                                        <div class="do-element-text do-element-general">
-                                            <div class="do-element-text-content do-html">
-                                                <div class="do-html-content"><p><span
-                                                        style="color: rgb(255, 255, 255);"><span
-                                                        style="font-size: 24px;"><strong>客户:</strong></span></span>
-                                                </p>
-                                                    <p><span style="color: rgb(255, 255, 255);"><span
-                                                            style="font-size: 24px;"><strong><strong>Jeffrey公司</strong></strong></span></span>
-                                                    </p></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="do-col-2">
-                                <div class="do-panelcol">
-                                    <div class="do-block do-text do-240u6">
-                                        <div class="do-element-text do-element-general">
-                                            <div class="do-element-text-content do-html">
-                                                <div class="do-html-content"><p><span
-                                                        style="color: rgb(255, 255, 255);"><span
-                                                        style="font-size: 24px;"><strong>社区:</strong></span></span>
-                                                </p>
-                                                    <p><span style="color: rgb(255, 255, 255);"><span
-                                                            style="font-size: 24px;"><strong><strong><strong>曼哈顿</strong></strong></strong></span></span>
-                                                    </p></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="do-col-8">
-                                <div class="do-panelcol">
-                                    <div class="do-block do-text do-240u5">
-                                        <div class="do-element-text do-element-general">
-                                            <div class="do-element-text-content do-html">
-                                                <div class="do-html-content"><p><span
-                                                        style="color: rgb(255, 255, 255);"><span
-                                                        style="font-size: 24px;"><strong>时间:</strong></span></span>
-                                                </p>
-                                                    <p><span style="color: rgb(255, 255, 255);"><span
-                                                            style="font-size: 24px;"><strong>2014年</strong></span></span>
-                                                    </p></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="do-block do-space do-240u4">
-                        <div class="do-element-space" style="padding-top:1.3333333333333335%;"></div>
-                    </div>
-                    <div class="do-block do-text do-240u3">
-                        <div class="do-element-text do-element-general">
-                            <div class="do-element-text-content do-html">
-                                <div class="do-html-content"><p style="line-height: 1.2;"><span
-                                        style="color: rgb(255, 255, 255);"><span style="font-size: 16px;">我们团队的商业游说团体变成一个大空间拥有16英尺的天花板上装了一个宁静石灰岩飞地。&nbsp;</span></span>
-                                </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">磨练和纹理的石灰石由线性湾照明强调,作为削减在天花板和墙壁。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">战略画天花板滴眼液新位于中心接待处裹在抛光大理石,玉石马赛克。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">温暖的调色板选择对比斯多葛派的颜色通常与商业空间相关联。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">为了达到所需的温暖,同时保持其作为企业空间,经典的材料,如磨练石灰岩被清洁并列,现代的线条。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">海豚湾照明在天花板上加上金色,hand-applied威尼斯灰泥增加戏剧和深度空间,同时保持中立的调色板的宁静感觉。</span></span>
-                                    </p></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="do-block do-space do-240u2">
-                        <div class="do-element-space" style="padding-top:1.6666666666666667%;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="do-section do-area do-area-fullHeight" id="area_17138_2" data-fullname="">
-    <div class="do-area-bg ">
-        <div class="do-area-bg-conter"
-             style="background-image: url('http://image.styleweb.cn/2016/06/22/f75716b732900e30c9f17e47ed602f69.jpe?imageMogr2/thumbnail/2000x2000/q/100');background-attachment:">
-            <div class="bgcolor"></div>
-        </div>
-    </div>
-    <div id="area_2" class="do-row do-row-one ">
-        <div class="do-row ">
-            <div class="do-col-12">
-                <div class="do-panelcol">
-                    <div class="do-block do-space do-240u1">
-                        <div class="do-element-space" style="padding-top:25%;"></div>
-                    </div>
-                    <div class="do-block do-rows">
-                        <div class="do-row">
-                            <div class="do-col-2">
-                                <div class="do-panelcol">
-                                    <div class="do-block do-text do-240u0">
-                                        <div class="do-element-text do-element-general">
-                                            <div class="do-element-text-content do-html">
-                                                <div class="do-html-content"><p><span
-                                                        style="color: rgb(255, 255, 255);"><span
-                                                        style="font-size: 24px;"><strong>客户:</strong></span></span>
-                                                </p>
-                                                    <p><span style="color: rgb(255, 255, 255);"><span
-                                                            style="font-size: 24px;"><strong><strong>Jeffrey公司</strong></strong></span></span>
-                                                    </p></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="do-col-2">
-                                <div class="do-panelcol">
-                                    <div class="do-block do-text do-240tz">
-                                        <div class="do-element-text do-element-general">
-                                            <div class="do-element-text-content do-html">
-                                                <div class="do-html-content"><p><span
-                                                        style="color: rgb(255, 255, 255);"><span
-                                                        style="font-size: 24px;"><strong>社区:</strong></span></span>
-                                                </p>
-                                                    <p><span style="color: rgb(255, 255, 255);"><span
-                                                            style="font-size: 24px;"><strong><strong><strong>曼哈顿</strong></strong></strong></span></span>
-                                                    </p></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="do-col-8">
-                                <div class="do-panelcol">
-                                    <div class="do-block do-text do-240ty">
-                                        <div class="do-element-text do-element-general">
-                                            <div class="do-element-text-content do-html">
-                                                <div class="do-html-content"><p><span
-                                                        style="color: rgb(255, 255, 255);"><span
-                                                        style="font-size: 24px;"><strong>时间:</strong></span></span>
-                                                </p>
-                                                    <p><span style="color: rgb(255, 255, 255);"><span
-                                                            style="font-size: 24px;"><strong>2014年</strong></span></span>
-                                                    </p></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="do-block do-space do-240tx">
-                        <div class="do-element-space" style="padding-top:1.3333333333333335%;"></div>
-                    </div>
-                    <div class="do-block do-text do-240tw">
-                        <div class="do-element-text do-element-general">
-                            <div class="do-element-text-content do-html">
-                                <div class="do-html-content"><p style="line-height: 1.2;"><span
-                                        style="color: rgb(255, 255, 255);"><span style="font-size: 16px;">我们团队的商业游说团体变成一个大空间拥有16英尺的天花板上装了一个宁静石灰岩飞地。&nbsp;</span></span>
-                                </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">磨练和纹理的石灰石由线性湾照明强调,作为削减在天花板和墙壁。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">战略画天花板滴眼液新位于中心接待处裹在抛光大理石,玉石马赛克。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">温暖的调色板选择对比斯多葛派的颜色通常与商业空间相关联。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">为了达到所需的温暖,同时保持其作为企业空间,经典的材料,如磨练石灰岩被清洁并列,现代的线条。&nbsp;</span></span>
-                                    </p>
-                                    <p style="line-height: 1.2;"><span style="color: rgb(255, 255, 255);"><span
-                                            style="font-size: 16px;">海豚湾照明在天花板上加上金色,hand-applied威尼斯灰泥增加戏剧和深度空间,同时保持中立的调色板的宁静感觉。</span></span>
-                                    </p></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="do-block do-space do-240tv">
-                        <div class="do-element-space" style="padding-top:1.6666666666666667%;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{{/foreach}}
 <div class="do-section do-area do-area-full" id="area_17138_3" data-fullname="">
     <div class="do-area-bg ">
         <div class="do-area-bg-conter">
@@ -455,205 +145,31 @@
                                  id="swiper_24xr0" data-rows="2" data-phoneRows="1" data-initialSlide="4"
                                  data-slidesPerColumn="1">
                                 <ul class="do-element-media-ul x do-content-grid ">
+                                    {{foreach $exams as $exam}}
                                     <li class="do-element-media-li pgid-17125 " data-wow-delay=".0s"><a
-                                            href="/17125.html">
+                                            href="{{'home/case_desc'|base_url}}?case_id={{$exam.case_id}}">
                                         <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
                                             <div class="do-media-image-box o-mask">
                                                 <div class="do-media-image"
                                                      style="padding-top:82.34552332912989%;">
                                                     <div class="do-media-image-conter"><img
                                                             class="scrollLoading" alt=""
-                                                            data-src="http://image.styleweb.cn/2016/06/22/81e9f87cd4f00bfc47ad063caebfec41.jpg?imageView2/2//w/1000"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42gEFAPr/AP///wAI/AL+Sr4t6gAAAABJRU5ErkJggg=="
-                                                            style="margin-left: -4.88959%; margin-top: 0%; width: 109.779%; height: 100%;"/>
+                                                            data-src="{{'upload/file/'|base_url}}{{$exam.pic}}"
+                                                            src="" style="margin-left: -4.88959%; margin-top: 0%; width: 109.779%; height: 100%;"/>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="do-title do-html-content">
                                                 <div class="do-title-body">
                                                     <div class="do-title-content do-html-content">
-                                                        <div class="do-html-content title"><p><strong><span>简约欧式风</span></strong>
+                                                        <div class="do-html-content title"><p><strong><span>{{$exam.name}}</span></strong>
                                                         </p></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </a></li>
-                                    <li class="do-element-media-li pgid-17137 " data-wow-delay=".1s"><a
-                                            href="/17137.html">
-                                        <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                            <div class="do-media-image-box o-mask">
-                                                <div class="do-media-image"
-                                                     style="padding-top:82.34552332912989%;">
-                                                    <div class="do-media-image-conter"><img
-                                                            class="scrollLoading" alt=""
-                                                            data-src="http://image.styleweb.cn/2016/06/22/42a6a3a1d2b729cafb3fffdfcdcafaaa.jpg?imageView2/2//w/1000"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42gEFAPr/AP///wAI/AL+Sr4t6gAAAABJRU5ErkJggg=="
-                                                            style="margin-left: -4.88959%; margin-top: 0%; width: 109.779%; height: 100%;"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="do-title do-html-content">
-                                                <div class="do-title-body">
-                                                    <div class="do-title-content do-html-content">
-                                                        <div class="do-html-content title"><p><strong><span
-                                                                style="font-size: 20px;">美式古典</span></strong>
-                                                        </p></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a></li>
-                                    <li class="do-element-media-li active pgid-17138 " data-wow-delay=".2s"><a
-                                            href="/17138.html">
-                                        <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                            <div class="do-media-image-box o-mask">
-                                                <div class="do-media-image"
-                                                     style="padding-top:82.34552332912989%;">
-                                                    <div class="do-media-image-conter"><img
-                                                            class="scrollLoading" alt=""
-                                                            data-src="http://image.styleweb.cn/2016/06/22/11634cb1ca829c5dc9bfbc7cd7117d0f.jpeg?imageView2/2//w/1000"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42gEFAPr/AP///wAI/AL+Sr4t6gAAAABJRU5ErkJggg=="
-                                                            style="margin-left: -12.195%; margin-top: 0%; width: 124.39%; height: 100%;"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="do-title do-html-content">
-                                                <div class="do-title-body">
-                                                    <div class="do-title-content do-html-content">
-                                                        <div class="do-html-content title"><p><span
-                                                                class="fr-just"
-                                                                style="font-size: 22px;"><br></span></p>
-                                                            <p><span><strong><span class="fr-just"
-                                                                                   style="font-size: 22px;">时尚混搭</span></strong></span>
-                                                            </p></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a></li>
-                                    <li class="do-element-media-li pgid-17139 " data-wow-delay=".3s"><a
-                                            href="/17139.html">
-                                        <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                            <div class="do-media-image-box o-mask">
-                                                <div class="do-media-image"
-                                                     style="padding-top:82.34552332912989%;">
-                                                    <div class="do-media-image-conter"><img
-                                                            class="scrollLoading" alt=""
-                                                            data-src="http://image.styleweb.cn/2016/06/21/e0d4c1ba09fadc8b3021ba91ee5fe48b.jpe?imageView2/2//w/1000"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42gEFAPr/AP///wAI/AL+Sr4t6gAAAABJRU5ErkJggg=="
-                                                            style="margin-left: 0%; margin-top: -0.475665%; width: 100%; height: 101.155%;"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="do-title do-html-content">
-                                                <div class="do-title-body">
-                                                    <div class="do-title-content do-html-content">
-                                                        <div class="do-html-content title"><p><strong><span
-                                                                style="font-size: 20px;">欧式古典</span></strong>
-                                                        </p></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a></li>
-                                    <li class="do-element-media-li pgid-17174 " data-wow-delay=".4s"><a
-                                            href="/17174.html">
-                                        <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                            <div class="do-media-image-box o-mask">
-                                                <div class="do-media-image"
-                                                     style="padding-top:82.34552332912989%;">
-                                                    <div class="do-media-image-conter"><img
-                                                            class="scrollLoading" alt=""
-                                                            data-src="http://image.styleweb.cn/2016/06/22/6f2f4d30249be07027b79cef8c71571a.jpe?imageView2/2//w/1000"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42gEFAPr/AP///wAI/AL+Sr4t6gAAAABJRU5ErkJggg=="
-                                                            style="margin-left: -31.7891%; margin-top: 0%; width: 163.578%; height: 100%;"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="do-title do-html-content">
-                                                <div class="do-title-body">
-                                                    <div class="do-title-content do-html-content">
-                                                        <div class="do-html-content title"><p><strong><span
-                                                                style="font-size: 20px;">地中海</span></strong></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a></li>
-                                    <li class="do-element-media-li " data-wow-delay=".5s">
-                                        <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                            <div class="do-media-image-box o-mask">
-                                                <div class="do-media-image"
-                                                     style="padding-top:82.34552332912989%;">
-                                                    <div class="do-media-image-conter"><img
-                                                            class="scrollLoading" alt=""
-                                                            data-src="http://image.styleweb.cn/2016/03/22/40aaa4a71a417f1e5c33b9667ec9fa5c.jpe?imageView2/2//w/1000"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42gEFAPr/AP///wAI/AL+Sr4t6gAAAABJRU5ErkJggg=="
-                                                            style="margin-left: 0%; margin-top: -6.46552%; width: 100%; height: 120.833%;"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="do-title do-html-content">
-                                                <div class="do-title-body">
-                                                    <div class="do-title-content do-html-content">
-                                                        <div class="do-html-content title"><p><span
-                                                                style="color: rgb(255, 255, 255);"><strong>MINS THE</strong></span>
-                                                        </p></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="do-element-media-li " data-wow-delay=".6s">
-                                        <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                            <div class="do-media-image-box o-mask">
-                                                <div class="do-media-image"
-                                                     style="padding-top:82.34552332912989%;">
-                                                    <div class="do-media-image-conter"><img
-                                                            class="scrollLoading" alt=""
-                                                            data-src="http://image.styleweb.cn/2016/03/22/a746599dceeade04d635b0b0d4b9281e.jpeg?imageView2/2//w/1000"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42gEFAPr/AP///wAI/AL+Sr4t6gAAAABJRU5ErkJggg=="
-                                                            style="margin-left: 0%; margin-top: -6.46552%; width: 100%; height: 120.833%;"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="do-title do-html-content">
-                                                <div class="do-title-body">
-                                                    <div class="do-title-content do-html-content">
-                                                        <div class="do-html-content title"><p><span
-                                                                style="color: rgb(255, 255, 255);"><strong>BASKETBALL</strong></span>
-                                                        </p></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="do-element-media-li " data-wow-delay=".7s">
-                                        <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                            <div class="do-media-image-box o-mask">
-                                                <div class="do-media-image"
-                                                     style="padding-top:82.34552332912989%;">
-                                                    <div class="do-media-image-conter"><img
-                                                            class="scrollLoading" alt=""
-                                                            data-src="http://image.styleweb.cn/2016/03/22/328aca6b70b7fdc561f6aab55ea60d78.jpe?imageView2/2//w/1000"
-                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAEElEQVR42gEFAPr/AP///wAI/AL+Sr4t6gAAAABJRU5ErkJggg=="
-                                                            style="margin-left: 0%; margin-top: -6.46552%; width: 100%; height: 120.833%;"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="do-title do-html-content">
-                                                <div class="do-title-body">
-                                                    <div class="do-title-content do-html-content">
-                                                        <div class="do-html-content title"><p><span
-                                                                style="color: rgb(255, 255, 255);"><strong>FOOTBALL</strong></span>
-                                                        </p></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    {{/foreach}}
                                 </ul>
                             </div>
                         </div>

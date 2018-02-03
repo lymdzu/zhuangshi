@@ -29,7 +29,7 @@
                             <div class="do-element-text do-element-general">
                                 <div class="do-element-text-content do-html">
                                     <div class="do-html-content"><p style="line-height: 1.2;"><span
-                                            style="color: rgb(255, 255, 255);"><span style="font-size: 16px;">{{$exam.desc}}</span></span>
+                                            style="color: rgb(255, 255, 255);"><span style="font-size: 18px;font-weight: 500;">{{$exam.desc}}</span></span>
                                     </p>
                                         </div>
                                 </div>
@@ -42,7 +42,8 @@
                             <div class="do-element-button" style="padding-top:45px;">
                                 <div class="do-element-button-content">
                                     <div class="do-middle align-left">
-                                        <div class="do-middle-center"><a href="{{'home/case_desc'|base_url}} " target="_blank"
+                                        <div class="do-middle-center">
+                                            <a href="{{'home/case_desc'|base_url}}?case_id={{$exam.case_id}}"
                                                                          class="do-btn sm hollow do-bg-white "><h5>
                                             查看更多</h5></a></div>
                                     </div>

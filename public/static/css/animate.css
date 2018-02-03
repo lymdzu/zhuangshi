@@ -2102,7 +2102,7 @@ color-picker.mini .color-picker-wrapper .color-picker-panel{height:190px}
 .blogs-search-btn-no-bl{
     border-left-width: 0!important;
 }/* do-html */
-body{color:rgba(31,37,38,.75)}
+body{color:rgba(0,0,0,0)}
 .do-html{position: relative;z-index: 1;}
 :focus{outline: 0}
 /*.do-blocks{margin: 10px 0}*/
@@ -2892,6 +2892,10 @@ button.swiper-pagination-bullet{border:none;margin:0;padding:0;box-shadow:none;-
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .in-panel > .do-panelcol{padding: 12px}
+.do-panelcol .align-center .nav{
+    font-size: 18px;
+}
+
 
 /*解决 */
 .o-mask{

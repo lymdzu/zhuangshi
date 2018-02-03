@@ -60,6 +60,12 @@ class Home extends PublicController
 
     public function case_desc()
     {
+        $case_id = $this->input->get("case_id");
+        $this->load->model("CompanyModel", "company", true);
+        $pics = $this->company->get_case_pics($case_id);
+        $exams = $this->company->get_case_example();
+        $this->vars["exams"] = $exams;
+        $this->vars['pics'] = $pics;
         $this->vars['page'] = "desc";
         $this->page("case_desc.html");
     }

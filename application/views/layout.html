@@ -138,11 +138,6 @@
     </style>
     {{else if $page ="desc"}}
     <style>
-        #banner_17138_0 .do-area-bg-conter .bgcolor {background-color: rgba(8, 8, 8, 0.47);}
-
-        .lt-ie9 #banner_17138_0 .do-area-bg-conter .bgcolor {
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F080808, endColorstr=#7F080808)
-        }
 
         #area_17138_0 .do-area-bg-conter .bgcolor {
             background-color: rgba(7, 7, 7, 0.31);
@@ -209,13 +204,14 @@
 
         .z-nav-conter > li > a {
             color: rgba(251, 247, 247, 0.98);
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .z-nav-conter > li > a {
             color: rgba(251, 247, 247, 0.98);
-            font-size: 16px;
-            line-height: 1.85em;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 2em;
         }
     </style>
 </head>
@@ -226,10 +222,10 @@
         <label class="do-m-menustate" for="do-m-menustate"><span class="do-m-menustate-span"></span></label>
         <div class="do-nav-m-bar animate">
             <ul class="do-nav-m-ul clearfix">
-                <li class="nav16990 active" data-id="16990"><a href="{{'home/index'|base_url}}"><span>首页</span></a></li>
-                <li class="nav17093" data-id="17093"><a href="{{'home/classic_case'|base_url}}"><span>案例</span></a></li>
-                <li class="nav17098" data-id="17098"><a href="{{'home/team'|base_url}}"><span>团队</span></a></li>
-                <li class="nav17099" data-id="17099"><a href="{{'home/life'|base_url}}"><span>生活</span></a></li>
+                <li class="nav active" ><a href="{{'home/index'|base_url}}"><span>首页</span></a></li>
+                <li class="nav" ><a href="{{'home/classic_case'|base_url}}"><span>案例</span></a></li>
+                <li class="nav" ><a href="{{'home/team'|base_url}}"><span>团队</span></a></li>
+                <li class="nav"><a href="{{'home/life'|base_url}}"><span>生活</span></a></li>
             </ul>
         </div>
     </div>
@@ -271,16 +267,16 @@
                                                         <div class="z-nav-bar">
                                                             <div class="z-nav-container">
                                                                 <ul class="z-nav-conter clearfix">
-                                                                    <li class="nav16990 active" data-id="16990"><a
+                                                                    <li class="nav active" data-id="16990"><a
                                                                             href="{{'home/index'|base_url}}"><span>首页</span></a>
                                                                     </li>
-                                                                    <li class="nav17093" data-id="17093"><a
+                                                                    <li class="nav" data-id="17093"><a
                                                                             href="{{'home/classic_case'|base_url}}"><span>案例</span></a>
                                                                     </li>
-                                                                    <li class="nav17098" data-id="17098"><a
+                                                                    <li class="nav" data-id="17098"><a
                                                                             href="{{'home/team'|base_url}}"><span>团队</span></a>
                                                                     </li>
-                                                                    <li class="nav17099" data-id="17099"><a
+                                                                    <li class="nav" data-id="17099"><a
                                                                             href="{{'home/life'|base_url}}"><span>生活</span></a>
                                                                     </li>
                                                                 </ul>
