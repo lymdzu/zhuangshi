@@ -182,9 +182,6 @@ class Company extends AdController
         if (empty($style_name)) {
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计风格名称");
         }
-        if (empty($style_desc)) {
-            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计风格描述");
-        }
         $this->load->model("CompanyModel", "company", true);
         $add_status = $this->company->add_new_style($style_name, $style_desc);
         if ($add_status) {
