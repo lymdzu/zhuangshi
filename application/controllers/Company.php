@@ -74,7 +74,8 @@ class Company extends AdController
         } else {
             $fileName = uniqid("file_");
         }
-        $oldName = $fileName;
+        $extension = pathinfo($fileName);
+        $newName = time() . mt_rand(10000, 99999) . "."  . $extension["extension"];
         $filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;
         // Chunking might be enabled
         $chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;
@@ -130,7 +131,7 @@ class Company extends AdController
             }
         }
         if ($done) {
-            $uploadPath = $uploadDir . DIRECTORY_SEPARATOR . $oldName;
+            $uploadPath = $uploadDir . DIRECTORY_SEPARATOR . $newName;
 
             if (!$out = @fopen($uploadPath, "wb")) {
                 $this->json_result(WRITE_FILE_ERROR, "", "write file failed");
@@ -150,7 +151,7 @@ class Company extends AdController
             }
             @fclose($out);
             $this->load->model("CompanyModel", "company", true);
-            $save_status = $this->company->save_case_pic($case_id, $fileName);
+            $save_status = $this->company->save_case_pic($case_id, $newName);
             $pathInfo = pathinfo($fileName);
             $filetype = strtoupper($pathInfo['extension']);
             $size = sprintf("%.2f", $_REQUEST['size'] / 1024 / 1024);
