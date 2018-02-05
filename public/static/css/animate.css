@@ -3601,6 +3601,22 @@ html.ios .do-area{background-attachment:initial!important;}
 	.do-lableStyle-col1>ul>li {border-top-width: 1px;}
 	.do-element-tabtext-content {padding-top: 12px!important;}
 }
+.do-header .gray-bg{
+    background-image: url("../images/head-gray-bg.jpg");
+}
+.sty-row{
+    margin-top:70px;
+    margin-left: 8vh;
+    margin-right: 8vh;
+}
+.style-cont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.style-list{
+    position: relative;
+}
 
 
 

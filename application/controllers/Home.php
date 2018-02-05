@@ -47,6 +47,7 @@ class Home extends PublicController
     }
     public function style()
     {
+        $this->vars["gray_bg"] = true;
         $this->page("style.html");
     }
 
