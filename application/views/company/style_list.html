@@ -30,20 +30,21 @@
                                                 <tbody>
                                                 {{foreach $style_list as $style}}
                                                 <tr>
-                                                    <td class="client-avatar">
+                                                    <td class="cate-id">
                                                         {{$style.id}}
                                                     </td>
-                                                    <td>
-                                                        <a data-toggle="tab" href="#contact-1" class="client-link">{{$style.name}}</a>
+                                                    <td class="cate-name">
+                                                        {{$style.name}}
                                                     </td>
-                                                    <td>
-                                                        <a data-toggle="tab" href="#contact-1" class="client-link">{{$style.desc}}</a>
+                                                    <td class="cate-desc">
+                                                        {{$style.desc}}
                                                     </td>
                                                     <td>
                                                         {{$style.create_time|date_format:"%Y-%m-%d %H:%m:%S"}}
                                                     </td>
                                                     <td>
-                                                        <a class="btn btn-primary" href="{{'company/style_pic'|base_url}}?case_id={{$style.id}}">上传图片</a>
+                                                        <a class="btn btn-xs btn-warning edit-btn
+edit-btn" data-toggle="modal" href="#modal-edit-form">修改</a>&nbsp;&nbsp;<a class="btn btn-xs btn-primary " href="{{'company/style_pic'|base_url}}?case_id={{$style.id}}">上传图片</a>
                                                     </td>
                                                 </tr>
                                                 {{/foreach}}
@@ -91,6 +92,38 @@
             </div>
         </div>
     </div>
+    <div id="modal-edit-form" class="modal fade" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="m-t-none m-b">修改设计案例</h3>
+
+                            <form role="form" class="edit-style-user" onsubmit="return false;">
+                                <input type="hidden" name="id" value="" />
+                                <div class="form-group">
+                                    <label>设计风格名称：</label>
+                                    <input type="text" name="name" placeholder="请输入设计风格名称"
+                                           class="form-control" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label>设计风格介绍：</label>
+                                    <textarea type="text" name="desc" placeholder="请填写设计风格介绍" class="form-control"></textarea>
+                                </div>
+                                <div>
+                                    <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="edit_style"
+                                            type="submit">
+                                        <strong>提交</strong>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="application/javascript">
         $(function () {
             $("#add_style").on("click", function () {
@@ -105,6 +138,28 @@
                         layer.msg(res.emsg);
                     }
                 })
+            });
+            $("#edit_style").on("click", function () {
+                $.post("{{'company/edit_style'|base_url}}", $(".edit-style-user").serialize(), function (res) {
+                    if (res.ecode == 0) {
+                        layer.msg(res.result);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 3000);
+                    }
+                    else {
+                        layer.msg(res.emsg);
+                    }
+                })
+            });
+            $(".edit-btn").on("click", function (res) {
+                var id = $.trim($(this).parents("tr").find(".cate-id").text());
+                var name = $.trim($(this).parents("tr").find(".cate-name").text());
+                var desc = $.trim($(this).parents("tr").find(".cate-desc").text());
+                console.log(desc);
+                $("#modal-edit-form").find("input[name='name']").val(name);
+                $("#modal-edit-form").find("input[name='id']").val(id);
+                $("#modal-edit-form").find("textarea[name='desc']").val(desc);
             });
             $(".operate").on("click", function () {
                 var userstatus = $(this).data("status");

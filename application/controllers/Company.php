@@ -191,4 +191,25 @@ class Company extends AdController
             $this->json_result(API_ERROR, "", "设计风格添加失败");
         }
     }
+
+    /**
+     * 修改设计风格
+     * @author
+     */
+    public function edit_style()
+    {
+        $cate_id = trim($this->input->post("id"));
+        $style_name = trim($this->input->post("name"));
+        $style_desc = trim($this->input->post("desc"));
+        if (empty($style_name)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计风格名称");
+        }
+        $this->load->model("CompanyModel", "company", true);
+        $add_status = $this->company->edit_new_style($cate_id, $style_name, $style_desc);
+        if ($add_status) {
+            $this->json_result(REQUEST_SUCCESS, "修改成功");
+        } else {
+            $this->json_result(API_ERROR, "", "设计风格修改失败");
+        }
+    }
 }

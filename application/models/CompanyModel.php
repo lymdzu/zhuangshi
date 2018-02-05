@@ -33,6 +33,26 @@ class CompanyModel extends MY_Model
             return false;
         }
     }
+    /**
+     * 修改
+     * @param $id
+     * @param $name
+     * @param $desc
+     * @return bool
+     * @author
+     */
+    public function edit_new_style($id, $name, $desc)
+    {
+        $this->db->where("id", $id);
+        $style = array("name" => $name, "desc" => $desc, "create_time" => time(), "update_time" => time(), "status" => 1);
+        $update_status = $this->db->update("t_case", $style);
+        $row = $this->db->affected_rows();
+        if ($update_status && $row > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /**
      * 添加案例图片
