@@ -45,6 +45,10 @@ class Home extends PublicController
             $this->json_result(400, "", "抱歉报名失败");
         }
     }
+    public function style()
+    {
+        $this->page("style.html");
+    }
 
     /**
      * 经典案例
