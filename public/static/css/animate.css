@@ -3606,13 +3606,14 @@ html.ios .do-area{background-attachment:initial!important;}
 }
 .sty-row{
     margin-top:70px;
-    margin-left: 8vh;
-    margin-right: 8vh;
+    margin-left: 8vw;
+    margin-right: 8vw;
 }
 .style-cont{
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 50%;
 }
 .style-list{
     position: relative;

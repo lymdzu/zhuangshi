@@ -47,6 +47,9 @@ class Home extends PublicController
     }
     public function style()
     {
+        $this->load->model("CompanyModel", "company", true);
+        $exams = $this->company->get_case_example();
+        $this->vars["exams"] = $exams;
         $this->vars["gray_bg"] = true;
         $this->page("style.html");
     }
