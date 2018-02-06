@@ -9,7 +9,7 @@
                         <div class="ibox-tools">
                             <div class="text-muted small pull-right">
                                 <a data-toggle="modal" class="btn btn-primary btn-xs"
-                                   href="#modal-form">添加设计风格</a>
+                                   href="#modal-form">添加设计案例</a>
                             </div>
                         </div>
                     </div>
@@ -22,7 +22,9 @@
                                             <table class="table table-striped table-hover">
                                                 <thead>
                                                 <th>ID</th>
-                                                <th>风格名称</th>
+                                                <th>案例名称</th>
+                                                <th>风格</th>
+                                                <th>设计师</th>
                                                 <th>描述</th>
                                                 <th>创建时间</th>
                                                 <th>操作</th>
@@ -35,6 +37,12 @@
                                                     </td>
                                                     <td class="cate-name">
                                                         {{$style.name}}
+                                                    </td>
+                                                    <td class="cate-style">
+                                                        {{$style.style}}
+                                                    </td>
+                                                    <td class="cate-designer">
+                                                        {{$style.designer}}
                                                     </td>
                                                     <td class="cate-desc">
                                                         {{$style.desc}}
@@ -71,13 +79,41 @@ edit-btn" data-toggle="modal" href="#modal-edit-form">修改</a>&nbsp;&nbsp;<a c
 
                             <form role="form" class="style-user" onsubmit="return false;">
                                 <div class="form-group">
-                                    <label>设计风格名称：</label>
-                                    <input type="text" name="name" placeholder="请输入设计风格名称"
+                                    <label>设计案例名称：</label>
+                                    <input type="text" name="name" placeholder="请输入设计案例名称"
                                            class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>设计风格介绍：</label>
-                                    <textarea type="text" name="desc" placeholder="请填写设计风格介绍" class="form-control"></textarea>
+                                    <label>设计风格：</label>
+                                    <select class="form-control" name="style">
+                                        <option value="">请选择设计风格</option>
+                                        <option value="1">中式风格</option>
+                                        <option value="2">田园地中海风格</option>
+                                        <option value="3">美式风格</option>
+                                        <option value="4">日式风格</option>
+                                        <option value="5">简约风格</option>
+                                        <option value="6">混搭风格</option>
+                                        <option value="7">北欧风格</option>
+                                        <option value="8">东南亚风格</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>指定设计师：</label>
+                                    <select class="form-control" name="designer">
+                                        <option value="">请选择设计师</option>
+                                        <option value="1">A</option>
+                                        <option value="2">B</option>
+                                        <option value="3">C</option>
+                                        <option value="4">D</option>
+                                        <option value="5">E</option>
+                                        <option value="6">F</option>
+                                        <option value="7">G</option>
+                                        <option value="8">H</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>设计案例介绍：</label>
+                                    <textarea type="text" name="desc" placeholder="请填写设计案例介绍" class="form-control"></textarea>
                                 </div>
                                 <div>
                                     <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="add_style"
@@ -103,13 +139,41 @@ edit-btn" data-toggle="modal" href="#modal-edit-form">修改</a>&nbsp;&nbsp;<a c
                             <form role="form" class="edit-style-user" onsubmit="return false;">
                                 <input type="hidden" name="id" value="" />
                                 <div class="form-group">
-                                    <label>设计风格名称：</label>
-                                    <input type="text" name="name" placeholder="请输入设计风格名称"
+                                    <label>设计案例名称：</label>
+                                    <input type="text" name="name" placeholder="请输入设计案例名称"
                                            class="form-control" value="">
                                 </div>
                                 <div class="form-group">
-                                    <label>设计风格介绍：</label>
-                                    <textarea type="text" name="desc" placeholder="请填写设计风格介绍" class="form-control"></textarea>
+                                    <label>设计风格：</label>
+                                    <select class="form-control style" name="style">
+                                        <option value="">请选择设计风格</option>
+                                        <option value="1">中式风格</option>
+                                        <option value="2">田园地中海风格</option>
+                                        <option value="3">美式风格</option>
+                                        <option value="4">日式风格</option>
+                                        <option value="5">简约风格</option>
+                                        <option value="6">混搭风格</option>
+                                        <option value="7">北欧风格</option>
+                                        <option value="8">东南亚风格</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>指定设计师：</label>
+                                    <select class="form-control designer" name="designer">
+                                        <option value="">请选择设计师</option>
+                                        <option value="1">A</option>
+                                        <option value="2">B</option>
+                                        <option value="3">C</option>
+                                        <option value="4">D</option>
+                                        <option value="5">E</option>
+                                        <option value="6">F</option>
+                                        <option value="7">G</option>
+                                        <option value="8">H</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>设计案例介绍：</label>
+                                    <textarea type="text" name="desc" placeholder="请填写设计案例介绍" class="form-control"></textarea>
                                 </div>
                                 <div>
                                     <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="edit_style"
@@ -156,10 +220,14 @@ edit-btn" data-toggle="modal" href="#modal-edit-form">修改</a>&nbsp;&nbsp;<a c
                 var id = $.trim($(this).parents("tr").find(".cate-id").text());
                 var name = $.trim($(this).parents("tr").find(".cate-name").text());
                 var desc = $.trim($(this).parents("tr").find(".cate-desc").text());
+                var style = $.trim($(this).parents("tr").find(".cate-style").text());
+                var designer = $.trim($(this).parents("tr").find(".cate-designer").text());
                 console.log(desc);
                 $("#modal-edit-form").find("input[name='name']").val(name);
                 $("#modal-edit-form").find("input[name='id']").val(id);
                 $("#modal-edit-form").find("textarea[name='desc']").val(desc);
+                $("#modal-edit-form .style").find("option:contains('" + style + "')").attr("selected",true);
+                $("#modal-edit-form .designer").find("option:contains('" + designer + "')").attr("selected",true);
             });
             $(".operate").on("click", function () {
                 var userstatus = $(this).data("status");

@@ -1,8 +1,9 @@
 <div class="do-section fp-auto-height do-banner">
     <div class="sty-row">
         {{foreach $exams as $exam}}
+        {{if $exam}}
         <div class="style-cont">
-            <a href="{{'home/case_desc'|base_url}}?case_id={{$exam.case_id}}">
+            <a href="{{'home/classic_case'|base_url}}?style_id={{$exam.id}}">
                 <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
                     <div class="do-media-image-box o-mask">
                         <div class="do-media-image">
@@ -22,6 +23,7 @@
                 </div>
             </a>
         </div>
+        {{/if}}
         {{/foreach}}
     </div>
 </div>

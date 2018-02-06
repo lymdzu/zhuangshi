@@ -45,10 +45,23 @@ class Home extends PublicController
             $this->json_result(400, "", "抱歉报名失败");
         }
     }
+
+    /**
+     * 风格列表
+     * @auther lymdzu@hotmail.com
+     */
     public function style()
     {
         $this->load->model("CompanyModel", "company", true);
-        $exams = $this->company->get_case_example();
+        $style_list = $this->config->item("style_list");
+        $exams = array();
+        foreach ($style_list as $key => $style) {
+            $exam = $this->company->get_style_exam($key);
+            if (!empty($exam)) {
+                $exam['name'] = $style;
+            }
+            $exams[] = $exam;
+        }
         $this->vars["exams"] = $exams;
         $this->vars["gray_bg"] = true;
         $this->page("style.html");
@@ -59,8 +72,9 @@ class Home extends PublicController
      */
     public function classic_case()
     {
+        $style_id = $this->input->get("style_id");
         $this->load->model("CompanyModel", "company", true);
-        $exams = $this->company->get_case_example();
+        $exams = $this->company->get_case_exams($style_id);
         $this->vars["exams"] = $exams;
         $this->vars['page'] = "case";
         $this->page("case.html");

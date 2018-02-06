@@ -29,6 +29,11 @@ class Company extends AdController
     {
         $this->load->model("CompanyModel", "company", true);
         $style_list = $this->company->get_style_list();
+        $style_items = $this->config->item("style_list");
+        foreach($style_list as $key => $style)
+        {
+            $style_list[$key]['style'] = $style_items[$style['style']];
+        }
         $this->vars['style_list'] = $style_list;
         $this->page("company/style_list.html");
     }
@@ -179,12 +184,17 @@ class Company extends AdController
     public function add_style()
     {
         $style_name = trim($this->input->post("name"));
+        $style = trim($this->input->post("style"));
+        $designer = trim($this->input->post("designer"));
         $style_desc = trim($this->input->post("desc"));
+        if ($style === "") {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请选择设计风格");
+        }
         if (empty($style_name)) {
-            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计风格名称");
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计案例名称");
         }
         $this->load->model("CompanyModel", "company", true);
-        $add_status = $this->company->add_new_style($style_name, $style_desc);
+        $add_status = $this->company->add_new_style($style_name, $style_desc, $style, $designer);
         if ($add_status) {
             $this->json_result(REQUEST_SUCCESS, "添加成功");
         } else {
@@ -200,12 +210,17 @@ class Company extends AdController
     {
         $cate_id = trim($this->input->post("id"));
         $style_name = trim($this->input->post("name"));
+        $style = trim($this->input->post("style"));
+        $designer = trim($this->input->post("designer"));
         $style_desc = trim($this->input->post("desc"));
+        if ($style === "") {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请选择设计风格");
+        }
         if (empty($style_name)) {
-            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计风格名称");
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计案例名称");
         }
         $this->load->model("CompanyModel", "company", true);
-        $add_status = $this->company->edit_new_style($cate_id, $style_name, $style_desc);
+        $add_status = $this->company->edit_new_style($cate_id, $style_name, $style_desc, $style, $designer);
         if ($add_status) {
             $this->json_result(REQUEST_SUCCESS, "修改成功");
         } else {
