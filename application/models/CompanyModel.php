@@ -130,7 +130,7 @@ class CompanyModel extends MY_Model
      */
     public function get_case_exams($style_id)
     {
-        $query = $this->db->query("select * from t_case as c LEFT JOIN t_case_pic as p ON p.case_id = c.id WHERE c.id=? and p.is_default=1", $style_id);
+        $query = $this->db->query("select * from t_case as c LEFT JOIN t_case_pic as p ON p.case_id = c.id WHERE c.style=? and p.is_default=1", $style_id);
         return $query->result_array();
     }
 }
