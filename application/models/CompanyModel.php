@@ -14,7 +14,7 @@ class CompanyModel extends MY_Model
     }
     public function get_style_exam($style)
     {
-        $query = $this->db->query("select c.name, p.pic, c.id, c.style_id from t_case as c LEFT JOIN t_case_pic as p on c.id = p.case_id where p.is_default = 1 and c.style=?", $style);
+        $query = $this->db->query("select c.name, p.pic, c.id, c.style from t_case as c LEFT JOIN t_case_pic as p on c.id = p.case_id where p.is_default = 1 and c.style=?", $style);
         return $query->row_array();
     }
 
