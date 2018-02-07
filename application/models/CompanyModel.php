@@ -40,6 +40,56 @@ class CompanyModel extends MY_Model
     }
 
     /**
+     * 添加设计师
+     * @param $designer
+     * @param $position
+     * @param $employ_time
+     * @param $idea
+     * @param $expert
+     * @return bool
+     * @auther lymdzu@hotmail.com
+     */
+    public function add_new_designer($designer, $position, $employ_time, $idea, $expert)
+    {
+        $designer = array("designer" => $designer, "position" => $position,   "employ_time" =>$employ_time, "idea" => $idea, "expert" => $expert, "create_time" => time(), "update_time" => time());
+        $insert_status = $this->db->insert("t_designer", $designer);
+        $row = $this->db->affected_rows();
+        if ($insert_status && $row > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function edit_designer($id, $designer, $position, $employ_time, $idea, $expert)
+    {
+        $this->db->where("id", $id);
+        $designer = array("designer" => $designer, "position" => $position,   "employ_time" =>$employ_time, "idea" => $idea, "expert" => $expert, "create_time" => time(), "update_time" => time());
+        $insert_status = $this->db->update("t_designer", $designer);
+        $row = $this->db->affected_rows();
+        if ($insert_status && $row > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     *
+     * @return mixed
+     * @auther lymdzu@hotmail.com
+     */
+    public function get_designer_list()
+    {
+        $query = $this->db->query("select * from t_designer");
+        return $query->result_array();
+    }
+    public function get_designer_by_id($id)
+    {
+        $query = $this->db->query("select * from t_designer where id=?", $id);
+        return $query->row_array();
+    }
+
+    /**
      * 修改案例
      * @param $id
      * @param $name

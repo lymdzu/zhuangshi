@@ -12,12 +12,87 @@ class Company extends AdController
         parent::__construct();
     }
 
+    public function designer_list()
+    {
+        $this->load->model("CompanyModel", "company", true);
+        $designer_list = $this->company->get_designer_list();
+        $this->vars['designer_list'] = $designer_list;
+        $this->vars['row'] = "designer";
+        $this->page("company/designer_list.html");
+    }
+
+    public function new_page()
+    {
+        $this->vars['position'] = $this->config->item("position");
+        $this->page('designer/designer.html');
+    }
+    public function edit_page()
+    {
+        $this->load->model("CompanyModel", "company", true);
+        $id = $this->input->get("id");
+        $designer = $this->company->get_designer_by_id($id);
+        $this->vars['position'] = $this->config->item("position");
+        $this->vars['designer'] = $designer;
+        $this->page("designer/edit_designer.html");
+    }
+    public function edit_designer()
+    {
+        $id = trim($this->input->post("id"));
+        $designer = trim($this->input->post("designer"));
+        $position = trim($this->input->post("position"));
+        $employ_time = trim($this->input->post("employ_time"));
+        $idea = trim($this->input->post("idea"));
+        $expert = trim($this->input->post("expert"));
+        if (empty($designer)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师姓名");
+        }
+        if ($position === "") {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请选择设计师职称");
+        }
+        if (empty($employ_time)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师从业时间");
+        }
+        $this->load->model("CompanyModel", "company", true);
+        $add_status = $this->company->edit_designer($id, $designer, $position, $employ_time, $idea, $expert);
+        if ($add_status) {
+            $this->json_result(REQUEST_SUCCESS, "修改成功");
+        } else {
+            $this->json_result(API_ERROR, "", "修改失败");
+        }
+    }
+
+    public function add_designer()
+    {
+        $designer = trim($this->input->post("designer"));
+        $position = trim($this->input->post("position"));
+        $employ_time = trim($this->input->post("employ_time"));
+        $idea = trim($this->input->post("idea"));
+        $expert = trim($this->input->post("expert"));
+        if (empty($designer)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师姓名");
+        }
+        if ($position === "") {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请选择设计师职称");
+        }
+        if (empty($employ_time)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师从业时间");
+        }
+        $this->load->model("CompanyModel", "company", true);
+        $add_status = $this->company->add_new_designer($designer, $position, $employ_time, $idea, $expert);
+        if ($add_status) {
+            $this->json_result(REQUEST_SUCCESS, "添加成功");
+        } else {
+            $this->json_result(API_ERROR, "", "设计风格添加失败");
+        }
+    }
+
     /**
      * 设计师管理
      * @author
      */
     public function designer()
     {
+        $this->vars['row'] = "designer";
         $this->page("company/designer.html");
     }
 
@@ -27,13 +102,15 @@ class Company extends AdController
      */
     public function style()
     {
+        $this->vars['row'] = "style";
         $this->load->model("CompanyModel", "company", true);
         $style_list = $this->company->get_style_list();
+        $designer_list = $this->company->get_designer_list();
         $style_items = $this->config->item("style_list");
-        foreach($style_list as $key => $style)
-        {
+        foreach ($style_list as $key => $style) {
             $style_list[$key]['style'] = $style_items[$style['style']];
         }
+        $this->vars['designer_list'] = $designer_list;
         $this->vars['style_list'] = $style_list;
         $this->page("company/style_list.html");
     }
@@ -80,7 +157,7 @@ class Company extends AdController
             $fileName = uniqid("file_");
         }
         $extension = pathinfo($fileName);
-        $newName = time() . mt_rand(10000, 99999) . "."  . $extension["extension"];
+        $newName = time() . mt_rand(10000, 99999) . "." . $extension["extension"];
         $filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;
         // Chunking might be enabled
         $chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;

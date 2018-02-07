@@ -1,0 +1,85 @@
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>管理设计师</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t des-form" onsubmit="return false">
+                        <input type="hidden" name="id" value="{{$designer.id}}" />
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">设计师姓名：</label>
+                            <div class="col-sm-8">
+                                <input id="cname" name="designer" minlength="2" type="text" class="form-control" required=""
+                                       aria-required="true" value="{{$designer.designer}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">职位：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="position">
+                                    <option>请选择职位</option>
+                                    {{foreach $position as $pos}}
+                                    <option value="{{$pos}}" {{if $pos == $designer.position}}selected{{/if}}>{{$pos}}</option>
+                                    {{/foreach}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">从业时间：</label>
+                            <div class="col-sm-8">
+                                <input id="cemail" type="number" class="form-control" name="employ_time" required=""
+                                       aria-required="true" value="{{$designer.employ_time}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">设计理念：</label>
+                            <div class="col-sm-8">
+                                <textarea name="idea" class="form-control" required=""
+                                          aria-required="true" value="{{$designer.idea}}">{{$designer.idea}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">擅长风格：</label>
+                            <div class="col-sm-8">
+                            <textarea name="expert" class="form-control" required=""
+                                      aria-required="true" value="{{$designer.expert}}">{{$designer.expert}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-3">
+                                <button class="btn btn-primary des-sub" type="submit">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/javascript">
+    $(function () {
+        $(".des-sub").on("click", function () {
+            $.post("{{'company/edit_designer'|base_url}}", $(".des-form").serialize(), function (res) {
+                if (res.ecode == 0) {
+                    layer.msg(res.result);
+                    setTimeout(function () {
+                        window.location.href = "{{'company/designer_list'|base_url}}";
+                    }, 1000)
+                }
+                else {
+                    layer.msg(res.emsg);
+                }
+            })
+        })
+    })
+</script>
