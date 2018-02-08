@@ -62,7 +62,6 @@ class Home extends PublicController
             }
             $exams[] = $exam;
         }
-        $exams = array_unique($exams);
         log_message("info", "[list style], result" . json_encode($exams));
         $this->vars["exams"] = $exams;
         $this->vars["gray_bg"] = true;
