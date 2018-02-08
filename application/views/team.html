@@ -52,13 +52,15 @@
                         <div class="do-block do-space do-23l9z">
                             <div class="do-element-space" style="padding-top:4.166666666666666%;"></div>
                         </div>
+                        {{if $chair_design}}
                         <div class="do-block do-list do-240t4">
                             <div class="do-element-media x num4 phoneRows1 ">
                                 <div class="do-element-media-content " id="swiper_240t4" data-rows="3"
                                      data-phoneRows="1" data-initialSlide="0" data-slidesPerColumn="1">
                                     <ul class="do-element-media-ul x do-content-grid ">
-                                        <li class="do-element-media-li pgid-17178 " data-wow-delay=".0s"><a
-                                                href="/17178.html">
+                                        {{foreach $chair_design as $designer}}
+                                        <li class="do-element-media-li pgid-17178 " data-wow-delay=".0s">
+                                            <a href="{{'designer/show'|base_url}}?id={{$designer.id}}">
                                             <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
                                                 <div class="do-media-image-box o-mask">
                                                     <div class="do-media-image">
@@ -66,7 +68,7 @@
                                                             <div class="do-middle">
                                                                 <div class="do-middle-center">
                                                                     <img class="scrollLoading"
-                                                                         data-src="{{'static/design/周文诩.jpg'|base_url}}"  style="width: 100%" alt=""/></div>
+                                                                         data-src="{{'upload/file/'|base_url}}{{$designer.designer_pic}}"  style="width: 100%" alt=""/></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -74,150 +76,96 @@
                                                 <div class="do-title do-html-content">
                                                     <div class="do-title-body">
                                                         <div class="do-title-content do-html-content">
-                                                            <div class="do-html-content title"><h1>周文诩</h1></div>
-                                                            <div class="do-html-content des"><p><span>总监</span></p></div>
+                                                            <div class="do-html-content title"><h1>{{$designer.designer}}</h1></div>
+                                                            <div class="do-html-content des"><p><span>{{$designer.position}}</span></p></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a></li>
-                                        <li class="do-element-media-li pgid-17178 " data-wow-delay=".0s"><a
-                                                href="/17178.html">
-                                            <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                                <div class="do-media-image-box o-mask">
-                                                    <div class="do-media-image">
-                                                        <div class="sizeimg5 ">
-                                                            <div class="do-middle">
-                                                                <div class="do-middle-center">
-                                                                    <img class="scrollLoading"
-                                                                         data-src="{{'static/design/方芳.jpg'|base_url}}"  style="width: 100%" alt=""/></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="do-title do-html-content">
-                                                    <div class="do-title-body">
-                                                        <div class="do-title-content do-html-content">
-                                                            <div class="do-html-content title"><h1>方芳</h1></div>
-                                                            <div class="do-html-content des"><p><span>首席设计师</span></p></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a></li>
-                                        <li class="do-element-media-li pgid-17178 " data-wow-delay=".0s"><a
-                                                href="/17178.html">
-                                            <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                                <div class="do-media-image-box o-mask">
-                                                    <div class="do-media-image">
-                                                        <div class="sizeimg5 ">
-                                                            <div class="do-middle">
-                                                                <div class="do-middle-center">
-                                                                    <img class="scrollLoading"
-                                                                         data-src="{{'static/design/王郎-2.jpg'|base_url}}"  style="width: 100%" alt=""/></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="do-title do-html-content">
-                                                    <div class="do-title-body">
-                                                        <div class="do-title-content do-html-content">
-                                                            <div class="do-html-content title"><h1>王郎</h1></div>
-                                                            <div class="do-html-content des"><p><span>资深设计师</span></p></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a></li>
-                                        <li class="do-element-media-li pgid-17178 " data-wow-delay=".0s"><a
-                                                href="/17178.html">
-                                            <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                                <div class="do-media-image-box o-mask">
-                                                    <div class="do-media-image">
-                                                        <div class="sizeimg5 ">
-                                                            <div class="do-middle">
-                                                                <div class="do-middle-center">
-                                                                    <img class="scrollLoading"
-                                                                         data-src="{{'static/design/柯慧慧-2.jpg'|base_url}}"  style="width: 100%" alt=""/></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="do-title do-html-content">
-                                                    <div class="do-title-body">
-                                                        <div class="do-title-content do-html-content">
-                                                            <div class="do-html-content title"><h1>柯慧慧</h1></div>
-                                                            <div class="do-html-content des"><p><span>资深设计师</span></p></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a></li>
+                                        </a>
+                                        </li>
+                                        {{/foreach}}
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="do-block do-list do-240t2">
-                            <div class="do-element-media x num2 phoneRows1 ">
-                                <div class="do-element-media-content " id="swiper_240t2" data-rows="4"
+                        {{/if}}
+                        {{if $senior_design}}
+                        <div class="do-block do-list do-240t4">
+                            <div class="do-element-media x num4 phoneRows1 ">
+                                <div class="do-element-media-content " id="swiper_240t4" data-rows="3"
                                      data-phoneRows="1" data-initialSlide="0" data-slidesPerColumn="1">
                                     <ul class="do-element-media-ul x do-content-grid ">
-                                        <li class="do-element-media-li pgid-17191 " data-wow-delay=".0s"><a
-                                                href="/17191.html">
-                                            <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                                <div class="do-media-image-box o-mask">
-                                                    <div class="do-media-image">
-                                                        <div class="sizeimg5 ">
-                                                            <div class="do-middle">
-                                                                <div class="do-middle-center"><img
-                                                                        class="scrollLoading"
-                                                                        data-src="{{'static/design/刘伯琛-2.jpg'|base_url}}"
-                                                                        alt=""/></div>
+                                        {{foreach $senior_design as $designer}}
+                                        <li class="do-element-media-li pgid-17178 " data-wow-delay=".0s">
+                                            <a href="{{'designer/show'|base_url}}?id={{$designer.id}}">
+                                                <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
+                                                    <div class="do-media-image-box o-mask">
+                                                        <div class="do-media-image">
+                                                            <div class="sizeimg5 ">
+                                                                <div class="do-middle">
+                                                                    <div class="do-middle-center">
+                                                                        <img class="scrollLoading"
+                                                                             data-src="{{'upload/file/'|base_url}}{{$designer.designer_pic}}"  style="width: 100%" alt=""/></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="do-title do-html-content">
+                                                        <div class="do-title-body">
+                                                            <div class="do-title-content do-html-content">
+                                                                <div class="do-html-content title"><h1>{{$designer.designer}}</h1></div>
+                                                                <div class="do-html-content des"><p><span>{{$designer.position}}</span></p></div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="do-title do-html-content">
-                                                    <div class="do-title-body">
-                                                        <div class="do-title-content do-html-content">
-                                                            <div class="do-html-content title"><h1>刘伯琛</h1>
-                                                            </div>
-                                                            <div class="do-html-content des"><p><span>首席设计师</span></p></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a></li>
-                                        <li class="do-element-media-li pgid-17191 " data-wow-delay=".0s"><a
-                                                href="/17191.html">
-                                            <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
-                                                <div class="do-media-image-box o-mask">
-                                                    <div class="do-media-image">
-                                                        <div class="sizeimg5 ">
-                                                            <div class="do-middle">
-                                                                <div class="do-middle-center"><img
-                                                                        class="scrollLoading"
-                                                                        data-src="{{'static/design/郝亚龙-2.jpg'|base_url}}"
-                                                                        alt=""/></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="do-title do-html-content">
-                                                    <div class="do-title-body">
-                                                        <div class="do-title-content do-html-content">
-                                                            <div class="do-html-content title"><h1>郝亚龙</h1>
-                                                            </div>
-                                                            <div class="do-html-content des"><p><span>资深设计师</span></p></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a></li>
+                                            </a>
+                                        </li>
+                                        {{/foreach}}
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        {{/if}}
+                        {{if $junior_design}}
+                        <div class="do-block do-list do-240t4">
+                            <div class="do-element-media x num4 phoneRows1 ">
+                                <div class="do-element-media-content " id="swiper_240t4" data-rows="3"
+                                     data-phoneRows="1" data-initialSlide="0" data-slidesPerColumn="1">
+                                    <ul class="do-element-media-ul x do-content-grid ">
+                                        {{foreach $junior_design as $designer}}
+                                        <li class="do-element-media-li pgid-17178 " data-wow-delay=".0s">
+                                            <a href="{{'designer/show'|base_url}}?id={{$designer.id}}">
+                                                <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
+                                                    <div class="do-media-image-box o-mask">
+                                                        <div class="do-media-image">
+                                                            <div class="sizeimg5 ">
+                                                                <div class="do-middle">
+                                                                    <div class="do-middle-center">
+                                                                        <img class="scrollLoading"
+                                                                             data-src="{{'upload/file/'|base_url}}{{$designer.designer_pic}}"  style="width: 100%" alt=""/></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="do-title do-html-content">
+                                                        <div class="do-title-body">
+                                                            <div class="do-title-content do-html-content">
+                                                                <div class="do-html-content title"><h1>{{$designer.designer}}</h1></div>
+                                                                <div class="do-html-content des"><p><span>{{$designer.position}}</span></p></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        {{/foreach}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
                         <div class="do-block do-space do-23l9p">
                             <div class="do-element-space" style="padding-top:7.000000000000001%;"></div>
                         </div>

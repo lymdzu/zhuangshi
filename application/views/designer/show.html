@@ -2,9 +2,11 @@
     #banner_17178_0 .do-area-bg-conter .bgcolor {
         background-color: rgb(24, 24, 27);
     }
+
     #area_17178_0 .do-area-bg-conter .bgcolor {
         background-color: rgb(24, 24, 27);
     }
+
     #footer_17178_0 .do-area-bg-conter .bgcolor {
         background-color: rgba(157, 138, 121, 0.1);
     }
@@ -32,7 +34,7 @@
                                 <div class="do-element-text-content do-html">
                                     <div class="do-html-content"><p style="text-align: center; line-height: 1.2;">
                                         <img class="fr-dib"
-                                             src="http://image.styleweb.cn/2016/06/22/89b1eb920a6f50f56a8ebef6fce4fdf0.png"
+                                             src="{{'upload/file/'|base_url}}{{$designer.designer_pic}}"
                                              style=""><br></p></div>
                                 </div>
                             </div>
@@ -60,12 +62,19 @@
                         <div class="do-block do-text do-24jco">
                             <div class="do-element-text do-element-general">
                                 <div class="do-element-text-content do-html">
-                                    <div class="do-html-content"><p style="text-align: center; line-height: 1.4;">
-                                        <span style="color: rgb(255, 255, 255);"><span style="font-size: 48px;">Kathryn Harris</span></span>
-                                    </p>
-                                        <p style="text-align: center; line-height: 1.4;"><span
-                                                style="color: rgb(221, 221, 221);"><span
-                                                style="font-size: 24px;">导演</span></span></p></div>
+                                    <div class="do-html-content">
+                                        <p style="text-align: center; line-height: 1.4;">
+                                        <span style="color: rgb(255, 255, 255);">
+                                            <span style="font-size: 48px;">{{$designer.designer}}</span>
+                                        </span>
+                                        </p>
+
+                                        <p style="text-align: center; line-height: 1.4;">
+                                            <span style="color: rgb(221, 221, 221);">
+                                                <span style="font-size: 24px;">{{$designer.position}}</span>
+                                            </span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -73,76 +82,91 @@
                             <div class="do-element-space" style="padding-top:2.5%;"></div>
                         </div>
                         <div class="do-block do-text do-24icj">
+
                             <div class="do-element-text do-element-general">
                                 <div class="do-element-text-content do-html">
-                                    <div class="do-html-content"><p style="text-align: center;"><span
-                                            style="color: rgb(255, 255, 255);"><span style="font-size: 20px;">获得艺术学士学位后在密歇根州立大学的室内设计,猫从底特律搬到了纽约从事住宅室内设计。 她开始工</span></span>
-                                    </p>
-                                        <p style="text-align: center;"><span
-                                                style="color: rgb(255, 255, 255);"><span style="font-size: 20px;">作在行业定制的家具和水车机械公司,完成200多个住宅和商业项目期间。 渴望在更广阔的范围内设计,她</span></span>
+                                    <div class="do-html-content">
+                                        <p>
+                                            <span style="color: rgb(255, 255, 255);"><span style="font-size: 20px;">从业时间:{{$designer.employ_time}}年</span></span>
                                         </p>
-                                        <p style="text-align: center;"><span
-                                                style="color: rgb(255, 255, 255);"><span style="font-size: 20px;">在2014年开始为白厅内部工作,很快得到所有阶段的设计经验。 她的专业包括定制的木工和家具设计,照</span></span>
-                                        </p>
-                                        <p style="text-align: center;"><span
-                                                style="color: rgb(255, 255, 255);"><span style="font-size: 20px;">明设计,FF&amp;E规范。</span></span>
-                                        </p></div>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="do-block do-space do-24i46">
-                            <div class="do-element-space" style="padding-top:5%;"></div>
-                        </div>
-                        <div class="do-block do-space do-24i3z">
-                            <div class="do-element-space" style="padding-top:7.000000000000001%;"></div>
+                            <div class="do-element-text do-element-general">
+
+                                <div class="do-element-text-content do-html">
+                                    <div class="do-html-content">
+                                        <p>
+                                            <span style="color: rgb(255, 255, 255);"><span style="font-size: 20px;">擅长风格:{{$designer.expert}}</span></span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="do-element-text do-element-general">
+                                    <div class="do-element-text-content do-html">
+                                        <div class="do-html-content">
+                                            <p>
+                                                <span style="color: rgb(255, 255, 255);"><span style="font-size: 20px;">设计理念:{{$designer.idea}}</span></span>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="do-block do-space do-24i46">
+                                <div class="do-element-space" style="padding-top:5%;"></div>
+                            </div>
+                            <div class="do-block do-space do-24i3z">
+                                <div class="do-element-space" style="padding-top:7.000000000000001%;"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<style>
-    body .do-developers, .do-developers {
-        color: #666 !important;
-        width: 100% !important;
-        height: 38px !important;
-    }
+    <style>
+        body .do-developers, .do-developers {
+            color: #666 !important;
+            width: 100% !important;
+            height: 38px !important;
+        }
 
-    body .do-developers a, .do-developers a {
-        color: #666 !important;
-        display: inline-block !important;
-    }
+        body .do-developers a, .do-developers a {
+            color: #666 !important;
+            display: inline-block !important;
+        }
 
-    body .do-developers a:hover, .do-developers a:hover {
-        color: #000 !important;
-    }
+        body .do-developers a:hover, .do-developers a:hover {
+            color: #000 !important;
+        }
 
-    body .do-developers, .do-developers {
-        display: block !important;
-        border-top: 1px solid #ecebeb !important;
-        background: #f3f3f3 !important;
-        padding: 12px !important;
-        text-align: center !important;
-        font-size: 13px !important;
-        line-height: 100% !important;
-        opacity: 1 !important;
-        text-indent: 0 !important
-    }
+        body .do-developers, .do-developers {
+            display: block !important;
+            border-top: 1px solid #ecebeb !important;
+            background: #f3f3f3 !important;
+            padding: 12px !important;
+            text-align: center !important;
+            font-size: 13px !important;
+            line-height: 100% !important;
+            opacity: 1 !important;
+            text-indent: 0 !important
+        }
 
-    body .do-developers i, .do-developers i {
-        font-size: 13px !important;
-        vertical-align: middle;
-        position: relative;
-        top: -1px
-    }
+        body .do-developers i, .do-developers i {
+            font-size: 13px !important;
+            vertical-align: middle;
+            position: relative;
+            top: -1px
+        }
 
-    body .do-developers *, .do-developers * {
-        opacity: 1 !important;
-        text-indent: 0 !important;
-        display: inline-block !important;
-    }
+        body .do-developers *, .do-developers * {
+            opacity: 1 !important;
+            text-indent: 0 !important;
+            display: inline-block !important;
+        }
 
 
-</style>
+    </style>
 </div>

@@ -98,6 +98,17 @@ class Home extends PublicController
      */
     public function team()
     {
+        $this->load->model("CompanyModel", "company", true);
+        $designers = $this->company->get_designer_list();
+        foreach ($designers as $designer) {
+            if ($designer['position'] == "首席设计师") {
+                $this->vars['chair_design'][] = $designer;
+            } elseif ($designer['position'] == "资深设计师") {
+                $this->vars['senior_design'][] = $designer;
+            } elseif ($designer['position'] == "主案设计师") {
+                $this->vars['junior_design'][] = $designer;
+            }
+        }
         $this->vars['page'] = "team";
         $this->page("team.html");
     }
