@@ -36,7 +36,7 @@ class CompanyModel extends MY_Model
      */
     public function add_new_style($name, $desc, $style, $designer)
     {
-        $style = array("name" => $name, "style" => $style, "designer" =>$designer, "desc" => $desc, "create_time" => time(), "update_time" => time(), "status" => 1);
+        $style = array("name" => $name, "style" => $style, "designer" => $designer, "desc" => $desc, "create_time" => time(), "update_time" => time(), "status" => 1);
         $insert_status = $this->db->insert("t_case", $style);
         $row = $this->db->affected_rows();
         if ($insert_status && $row > 0) {
@@ -53,12 +53,13 @@ class CompanyModel extends MY_Model
      * @param $employ_time
      * @param $idea
      * @param $expert
+     * @param $designer_pic 设计师照片
      * @return bool
      * @auther lymdzu@hotmail.com
      */
-    public function add_new_designer($designer, $position, $employ_time, $idea, $expert)
+    public function add_new_designer($designer, $position, $employ_time, $idea, $expert, $designer_pic)
     {
-        $designer = array("designer" => $designer, "position" => $position,   "employ_time" =>$employ_time, "idea" => $idea, "expert" => $expert, "create_time" => time(), "update_time" => time());
+        $designer = array("designer" => $designer, "position" => $position, "employ_time" => $employ_time, "idea" => $idea, "expert" => $expert, "designer_pic" => $designer_pic, "create_time" => time(), "update_time" => time());
         $insert_status = $this->db->insert("t_designer", $designer);
         $row = $this->db->affected_rows();
         if ($insert_status && $row > 0) {
@@ -67,10 +68,26 @@ class CompanyModel extends MY_Model
             return false;
         }
     }
-    public function edit_designer($id, $designer, $position, $employ_time, $idea, $expert)
+
+    /**
+     * 修改设计师信息
+     * @param $id
+     * @param $designer
+     * @param $position
+     * @param $employ_time
+     * @param $idea
+     * @param $expert
+     * @param $designer_pic
+     * @return bool
+     * @author liuyongming@shopex.cn
+     */
+    public function edit_designer($id, $designer, $position, $employ_time, $idea, $expert, $designer_pic)
     {
         $this->db->where("id", $id);
-        $designer = array("designer" => $designer, "position" => $position,   "employ_time" =>$employ_time, "idea" => $idea, "expert" => $expert, "create_time" => time(), "update_time" => time());
+        $designer = array("designer" => $designer, "position" => $position, "employ_time" => $employ_time, "idea" => $idea, "expert" => $expert, "create_time" => time(), "update_time" => time());
+        if (!empty($designer_pic)) {
+            $designer['designer_pic'] = $designer_pic;
+        }
         $insert_status = $this->db->update("t_designer", $designer);
         $row = $this->db->affected_rows();
         if ($insert_status && $row > 0) {
@@ -90,6 +107,7 @@ class CompanyModel extends MY_Model
         $query = $this->db->query("select * from t_designer");
         return $query->result_array();
     }
+
     public function get_designer_by_id($id)
     {
         $query = $this->db->query("select * from t_designer where id=?", $id);
@@ -109,7 +127,7 @@ class CompanyModel extends MY_Model
     public function edit_new_style($id, $name, $desc, $style, $designer)
     {
         $this->db->where("id", $id);
-        $style = array("name" => $name, "style" => $style, "designer" =>$designer, "desc" => $desc, "create_time" => time(), "update_time" => time(), "status" => 1);
+        $style = array("name" => $name, "style" => $style, "designer" => $designer, "desc" => $desc, "create_time" => time(), "update_time" => time(), "status" => 1);
         $update_status = $this->db->update("t_case", $style);
         $row = $this->db->affected_rows();
         if ($update_status && $row > 0) {

@@ -26,6 +26,7 @@ class Company extends AdController
         $this->vars['position'] = $this->config->item("position");
         $this->page('designer/designer.html');
     }
+
     public function edit_page()
     {
         $this->load->model("CompanyModel", "company", true);
@@ -35,6 +36,11 @@ class Company extends AdController
         $this->vars['designer'] = $designer;
         $this->page("designer/edit_designer.html");
     }
+
+    /**
+     * 修改设计师信息
+     * @author
+     */
     public function edit_designer()
     {
         $id = trim($this->input->post("id"));
@@ -43,6 +49,7 @@ class Company extends AdController
         $employ_time = trim($this->input->post("employ_time"));
         $idea = trim($this->input->post("idea"));
         $expert = trim($this->input->post("expert"));
+        $designer_pic =  trim($this->input->post("designer_pic"));
         if (empty($designer)) {
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师姓名");
         }
@@ -53,7 +60,7 @@ class Company extends AdController
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师从业时间");
         }
         $this->load->model("CompanyModel", "company", true);
-        $add_status = $this->company->edit_designer($id, $designer, $position, $employ_time, $idea, $expert);
+        $add_status = $this->company->edit_designer($id, $designer, $position, $employ_time, $idea, $expert, $designer_pic);
         if ($add_status) {
             $this->json_result(REQUEST_SUCCESS, "修改成功");
         } else {
@@ -61,6 +68,10 @@ class Company extends AdController
         }
     }
 
+    /**
+     * 添加设计师
+     * @author
+     */
     public function add_designer()
     {
         $designer = trim($this->input->post("designer"));
@@ -68,6 +79,7 @@ class Company extends AdController
         $employ_time = trim($this->input->post("employ_time"));
         $idea = trim($this->input->post("idea"));
         $expert = trim($this->input->post("expert"));
+        $designer_pic =  trim($this->input->post("designer_pic"));
         if (empty($designer)) {
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师姓名");
         }
@@ -78,7 +90,7 @@ class Company extends AdController
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师从业时间");
         }
         $this->load->model("CompanyModel", "company", true);
-        $add_status = $this->company->add_new_designer($designer, $position, $employ_time, $idea, $expert);
+        $add_status = $this->company->add_new_designer($designer, $position, $employ_time, $idea, $expert, $designer_pic);
         if ($add_status) {
             $this->json_result(REQUEST_SUCCESS, "添加成功");
         } else {
@@ -233,11 +245,10 @@ class Company extends AdController
             }
             @fclose($out);
             $this->load->model("CompanyModel", "company", true);
-            $save_status = $this->company->save_case_pic($case_id, $newName);
-            $pathInfo = pathinfo($fileName);
-            $filetype = strtoupper($pathInfo['extension']);
-            $size = sprintf("%.2f", $_REQUEST['size'] / 1024 / 1024);
-            $this->json_result(REQUEST_SUCCESS, $fileName);
+            if (!empty($case_id)) {
+                $this->company->save_case_pic($case_id, $newName);
+            }
+            $this->json_result(REQUEST_SUCCESS, $newName);
         }
     }
 

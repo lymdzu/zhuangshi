@@ -3613,6 +3613,12 @@ html.ios .do-area{background-attachment:initial!important;}
     flex-wrap: wrap;
     align-items: center;
 }
+@media only screen and (max-width: 640px){
+    .style-cont{
+        width: 80%;
+        margin-right: 1rem;
+    }
+}
 .style-cont{
     width: 48%;
     margin-right: 1rem;
