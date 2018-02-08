@@ -22,7 +22,7 @@
     <link href="{{'static/css/animate.css'|base_url}}?2017829173845" rel="stylesheet" type="text/css"/>
     <link href="{{'static/css/colors.css'|base_url}}?2017829173845" rel="stylesheet" type="text/css"/>
     <link href="{{'static/css/style.css'|base_url}}?2017829173845" rel="stylesheet" type="text/css"/>
-    {{if $page == "case"}}
+    {{if isset($page) && $page == "case"}}
     <link href="{{'static/js/fullPage/jquery.fullPage.css'|base_url}}" rel="stylesheet">
     {{/if}}
     <style>
@@ -77,7 +77,7 @@
     <script src="{{'static/layer/layui.all.js'|base_url}}"></script>
     <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
     <link rel="stylesheet" href="{{'static/css/element-list-style.css'|base_url}}">
-    {{if $page == "home"}}
+    {{if isset($page) && $page == "home"}}
     <style>
         #area_16990_0 .do-area-bg-conter .bgcolor {
             background-color: rgba(157, 138, 121, 0.1);
@@ -103,7 +103,7 @@
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#199d8a79, endColorstr=#199d8a79)
         }
     </style>
-    {{else if $page == "case"}}
+    {{else if isset($page) && $page == "case"}}
     <style>
         #area_17093_1 .do-area-bg-conter .bgcolor {
             background-color: rgba(10, 10, 10, 0.39);
@@ -124,19 +124,19 @@
         #footer_17093_0 .do-area-bg-conter .bgcolor {background-color: rgba(157, 138, 121, 0.1);}
         .lt-ie9 #footer_17093_0 .do-area-bg-conter .bgcolor { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#199d8a79, endColorstr=#199d8a79)  }
     </style>
-    {{else if $page == "team"}}
+    {{else if isset($page) && $page == "team"}}
     <style>
         #banner_17098_0 .do-area-bg-conter .bgcolor { background-color:rgb(24, 24, 27); }
         #area_17098_0 .do-area-bg-conter .bgcolor { background-color:rgb(24, 24, 27); }
         #footer_17098_0 .do-area-bg-conter .bgcolor { background-color:rgba(157, 138, 121, 0.1); }.lt-ie9 #footer_17098_0 .do-area-bg-conter .bgcolor { filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#199d8a79,endColorstr=#199d8a79) }
     </style>
-    {{else if $page == "life"}}
+    {{else if isset($page) && $page == "life"}}
     <style>
         #banner_17099_0 .do-area-bg-conter .bgcolor { background-color:rgb(24, 24, 27); }
         #area_17099_0 .do-area-bg-conter .bgcolor { background-color:rgb(24, 24, 27); }
         #footer_17099_0 .do-area-bg-conter .bgcolor { background-color:rgba(157, 138, 121, 0.1); }.lt-ie9 #footer_17099_0 .do-area-bg-conter .bgcolor { filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#199d8a79,endColorstr=#199d8a79) }
     </style>
-    {{else if $page ="desc"}}
+    {{else if isset($page) && $page ="desc"}}
     <style>
 
         #area_17138_0 .do-area-bg-conter .bgcolor {
