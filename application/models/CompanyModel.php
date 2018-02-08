@@ -12,6 +12,13 @@ class CompanyModel extends MY_Model
         $query = $this->db->query("select c.id, c.name, c.style, c.desc, d.designer from t_case as c LEFT JOIN t_designer as d  ON d.id=c.designer WHERE c.status = 1 ORDER BY c.create_time desc");
         return $query->result_array();
     }
+
+    /**
+     *
+     * @param $style
+     * @return mixed
+     * @author liuyongming@shopex.cn
+     */
     public function get_style_exam($style)
     {
         $query = $this->db->query("select c.name, p.pic, c.id, c.style from t_case as c LEFT JOIN t_case_pic as p on c.id = p.case_id where p.is_default = 1 and c.style=?", $style);
