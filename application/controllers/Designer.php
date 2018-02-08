@@ -11,6 +11,7 @@ class Designer extends PublicController
         $id = trim($this->input->get("id"));
         $this->load->model("CompanyModel", "company", true);
         $designer = $this->company->get_designer_by_id($id);
+        $this->vars['exams'] = $this->company->get_designer_exams($id);
         $this->vars['designer'] = $designer;
         $this->page("designer/show.html");
     }

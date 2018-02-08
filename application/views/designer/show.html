@@ -170,3 +170,66 @@
 
     </style>
 </div>
+{{if $exams}}
+<div class="do-section do-area do-area-full" id="area_17138_3" data-fullname="">
+    <div class="do-area-bg ">
+        <div class="do-area-bg-conter">
+            <div class="bgcolor"></div>
+        </div>
+    </div>
+    <div id="area_3" class="do-row do-row-one ">
+        <div class="do-row ">
+            <div class="do-col-12">
+                <div class="do-panelcol">
+                    <div class="do-block do-text do-24xr2">
+                        <div class="do-element-text do-element-general">
+                            <div class="do-element-text-content do-html">
+                                <div class="do-html-content"><p style="text-align: center;"><span
+                                        style="font-size: 20px;">设计师作品</span></p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="do-block do-space do-24xr1">
+                        <div class="do-element-space" style="padding-top:2.77602523659306%;"></div>
+                    </div>
+                    <div class="do-block do-list do-24xr0">
+                        <div class="do-element-media x num2 phoneRows1 ">
+                            <div class="do-element-media-content swiper-container do-list-swiper"
+                                 id="swiper_24xr0" data-rows="2" data-phoneRows="1" data-initialSlide="4"
+                                 data-slidesPerColumn="1">
+                                <ul class="do-element-media-ul x do-content-grid ">
+                                    {{foreach $exams as $exam}}
+                                    <li class="do-element-media-li pgid-17125 " data-wow-delay=".0s"><a
+                                            href="{{'home/case_desc'|base_url}}?case_id={{$exam.case_id}}">
+                                        <div class="do-element-media-conter clearfix do-caption-overlay-hover-cover ">
+                                            <div class="do-media-image-box o-mask">
+                                                <div class="do-media-image"
+                                                     style="padding-top:82.34552332912989%;">
+                                                    <div class="do-media-image-conter"><img
+                                                            class="scrollLoading" alt=""
+                                                            data-src="{{'upload/file/'|base_url}}{{$exam.pic}}"
+                                                            src="" style="margin-left: -4.88959%; margin-top: 0%; width: 109.779%; height: 100%;"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="do-title do-html-content">
+                                                <div class="do-title-body">
+                                                    <div class="do-title-content do-html-content">
+                                                        <div class="do-html-content title"><p><strong><span>{{$exam.name}}</span></strong>
+                                                        </p></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a></li>
+                                    {{/foreach}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
