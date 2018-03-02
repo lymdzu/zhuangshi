@@ -13,7 +13,12 @@
         z-index: 1000;
     }
     .right-btn{
-        left: 65%;
+        position: absolute;
+        top:50%;
+        right: 15%;
+        align-items: center;
+        opacity: 0.7;
+        z-index: 10000;
     }
 </style>
 <div class="row">
@@ -53,7 +58,7 @@
                         {{else}}
                         <button class="btn btn-primary center-btn" data-picid="{{$pic.id}}" data-caseid="{{$pic.case_id}}">封面默认图片</button>
                         {{/if}}
-                        <button class="btn btn-danger btn-xs center-btn right-btn delete-btn" data-picid="{{$pic.id}}">删除</button>
+                        <button class="btn btn-danger btn-xs  right-btn delete-btn clearfix" data-picid="{{$pic.id}}">删除</button>
                     </a>
                 {{/foreach}}
             </div>
@@ -64,7 +69,7 @@
 <script>
     $(document).ready(function () {
         $(".fancybox").fancybox({openEffect: "none", closeEffect: "none"});
-        $(".delete-btn").on("click", function () {
+        $(".delete-btn").on("click", function (e) {
             var pic_id  = $(this).data("picid");
             $.post("{{'company/delete_case_pic'|base_url}}", {pic_id:pic_id}, function (res) {
                 if (res.ecode == 0) {
@@ -77,6 +82,7 @@
                     layer.msg(res.emsg);
                 }
             });
+            return false;
         });
         $(".set_default").on("click", function (e) {
             var pic_id = $(this).data("picid");

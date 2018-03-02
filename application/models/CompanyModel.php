@@ -183,6 +183,24 @@ class CompanyModel extends MY_Model
     }
 
     /**
+     * 删除案例图片
+     * @param $pic_id
+     * @return bool
+     * @auther lymdzu@hotmail.com
+     */
+    public function delete_case_pic($pic_id)
+    {
+        $this->db->where("id", $pic_id);
+        $delete_status = $this->db->delete("t_case_pic");
+        $row = $this->db->affected_rows();
+        if ($delete_status && $row > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * 保存生活照片
      * @param $filename
      * @return bool
