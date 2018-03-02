@@ -53,13 +53,17 @@ class CompanyModel extends MY_Model
      * @param $employ_time
      * @param $idea
      * @param $expert
-     * @param $designer_pic 设计师照片
+     * @param $designer_pic
+     * @param $intro
+     * @param $school
+     * @param $works
+     * @param $honor
      * @return bool
      * @auther lymdzu@hotmail.com
      */
-    public function add_new_designer($designer, $position, $employ_time, $idea, $expert, $designer_pic)
+    public function add_new_designer($designer, $position, $employ_time, $idea, $expert, $designer_pic, $intro, $school, $works, $honor)
     {
-        $designer = array("designer" => $designer, "position" => $position, "employ_time" => $employ_time, "idea" => $idea, "expert" => $expert, "designer_pic" => $designer_pic, "create_time" => time(), "update_time" => time());
+        $designer = array("designer" => $designer, "position" => $position, "employ_time" => $employ_time, "idea" => $idea, "expert" => $expert, "designer_pic" => $designer_pic, "create_time" => time(), "update_time" => time(), "intro" => $intro, "school" => $school, "works" => $works, "honor" => $honor);
         $insert_status = $this->db->insert("t_designer", $designer);
         $row = $this->db->affected_rows();
         if ($insert_status && $row > 0) {
@@ -78,19 +82,41 @@ class CompanyModel extends MY_Model
      * @param $idea
      * @param $expert
      * @param $designer_pic
+     * @param $intro
+     * @param $school
+     * @param $works
+     * @param $honor
      * @return bool
-     * @author liuyongming@shopex.cn
+     * @auther lymdzu@hotmail.com
      */
-    public function edit_designer($id, $designer, $position, $employ_time, $idea, $expert, $designer_pic)
+    public function edit_designer($id, $designer, $position, $employ_time, $idea, $expert, $designer_pic, $intro, $school, $works, $honor)
     {
         $this->db->where("id", $id);
-        $designer = array("designer" => $designer, "position" => $position, "employ_time" => $employ_time, "idea" => $idea, "expert" => $expert, "create_time" => time(), "update_time" => time());
+        $designer = array("designer" => $designer, "position" => $position, "employ_time" => $employ_time, "idea" => $idea, "expert" => $expert, "create_time" => time(), "update_time" => time(), "intro" => $intro, "school" => $school, "works" => $works, "honor" => $honor);
         if (!empty($designer_pic)) {
             $designer['designer_pic'] = $designer_pic;
         }
         $insert_status = $this->db->update("t_designer", $designer);
         $row = $this->db->affected_rows();
         if ($insert_status && $row > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 删除设计师
+     * @param $id
+     * @return bool
+     * @auther lymdzu@hotmail.com
+     */
+    public function delete_designer($id)
+    {
+        $this->db->where("id", $id);
+        $delete_status = $this->db->delete("t_designer");
+        $row = $this->db->affected_rows();
+        if ($delete_status && $row > 0) {
             return true;
         } else {
             return false;
@@ -164,7 +190,7 @@ class CompanyModel extends MY_Model
      */
     public function save_activity_pic($filename)
     {
-        $pic = array( "pic" => $filename, "create_time" => time());
+        $pic = array("pic" => $filename, "create_time" => time());
         $insert_status = $this->db->insert("t_activity", $pic);
         $row = $this->db->affected_rows();
         if ($insert_status && $row > 0) {
@@ -243,6 +269,7 @@ class CompanyModel extends MY_Model
         $query = $this->db->query("select * from t_case as c LEFT JOIN t_case_pic as p ON p.case_id = c.id WHERE p.is_default=1");
         return $query->result_array();
     }
+
     public function get_designer_exams($desiger_id)
     {
         $query = $this->db->query("select * from t_case as c LEFT JOIN t_case_pic as p ON p.case_id = c.id WHERE c.designer={$desiger_id} and p.is_default=1");

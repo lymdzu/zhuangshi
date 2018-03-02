@@ -24,6 +24,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">个人介绍：</label>
+                            <div class="col-sm-8">
+                            <textarea name="intro" class="form-control" required="" value="{{$designer.intro}}" aria-required="true">{{$designer.intro}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">职位：</label>
                             <div class="col-sm-8">
                                 <select class="form-control" name="position">
@@ -42,6 +48,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">毕业院校：</label>
+                            <div class="col-sm-8">
+                                <input id="school" type="text" class="form-control" name="school" required=""
+                                       aria-required="true" value="{{$designer.school}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">设计理念：</label>
                             <div class="col-sm-8">
                                 <textarea name="idea" class="form-control" required=""
@@ -53,6 +66,19 @@
                             <div class="col-sm-8">
                             <textarea name="expert" class="form-control" required=""
                                       aria-required="true" value="{{$designer.expert}}">{{$designer.expert}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">代表作品：</label>
+                            <div class="col-sm-8">
+                            <textarea name="works" class="form-control" required=""
+                                      aria-required="true" value="{{$designer.works}}">{{$designer.works}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">所获荣誉：</label>
+                            <div class="col-sm-8">
+                            <textarea name="honor" class="form-control" required="" aria-required="true" value="{{$designer.honor}}">{{$designer.honor}}</textarea>
                             </div>
                         </div>
                         {{if $designer.designer_pic}}

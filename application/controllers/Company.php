@@ -21,6 +21,10 @@ class Company extends AdController
         $this->page("company/designer_list.html");
     }
 
+    /**
+     * 新增设计师
+     * @auther lymdzu@hotmail.com
+     */
     public function new_page()
     {
         $this->vars['position'] = $this->config->item("position");
@@ -46,9 +50,13 @@ class Company extends AdController
         $id = trim($this->input->post("id"));
         $designer = trim($this->input->post("designer"));
         $position = trim($this->input->post("position"));
+        $intro = trim($this->input->post("intro"));
+        $school = trim($this->input->post("school"));
         $employ_time = trim($this->input->post("employ_time"));
         $idea = trim($this->input->post("idea"));
         $expert = trim($this->input->post("expert"));
+        $works = trim($this->input->post("works"));
+        $honor = trim($this->input->post("honor"));
         $designer_pic = trim($this->input->post("designer_pic"));
         if (empty($designer)) {
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师姓名");
@@ -60,7 +68,7 @@ class Company extends AdController
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师从业时间");
         }
         $this->load->model("CompanyModel", "company", true);
-        $add_status = $this->company->edit_designer($id, $designer, $position, $employ_time, $idea, $expert, $designer_pic);
+        $add_status = $this->company->edit_designer($id, $designer, $position, $employ_time, $idea, $expert, $designer_pic, $intro, $school, $works, $honor);
         if ($add_status) {
             $this->json_result(REQUEST_SUCCESS, "修改成功");
         } else {
@@ -75,10 +83,14 @@ class Company extends AdController
     public function add_designer()
     {
         $designer = trim($this->input->post("designer"));
+        $intro = trim($this->input->post("intro"));
+        $school = trim($this->input->post("school"));
         $position = trim($this->input->post("position"));
         $employ_time = trim($this->input->post("employ_time"));
         $idea = trim($this->input->post("idea"));
         $expert = trim($this->input->post("expert"));
+        $works = trim($this->input->post("works"));
+        $honor = trim($this->input->post("honor"));
         $designer_pic = trim($this->input->post("designer_pic"));
         if (empty($designer)) {
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师姓名");
@@ -90,7 +102,7 @@ class Company extends AdController
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师从业时间");
         }
         $this->load->model("CompanyModel", "company", true);
-        $add_status = $this->company->add_new_designer($designer, $position, $employ_time, $idea, $expert, $designer_pic);
+        $add_status = $this->company->add_new_designer($designer, $position, $employ_time, $idea, $expert, $designer_pic, $intro, $school, $works, $honor);
         if ($add_status) {
             $this->json_result(REQUEST_SUCCESS, "添加成功");
         } else {
@@ -106,6 +118,22 @@ class Company extends AdController
     {
         $this->vars['row'] = "designer";
         $this->page("company/designer.html");
+    }
+
+    /**
+     * 删除设计师
+     * @auther lymdzu@hotmail.com
+     */
+    public function delete_designer()
+    {
+        $id = $this->input->post("id");
+        $this->load->model("CompanyModel", "company", true);
+        $delete_status = $this->company->delete_designer($id);
+        if ($delete_status) {
+            $this->json_result(REQUEST_SUCCESS, "删除设计师成功");
+        } else {
+            $this->json_result(API_ERROR, "", "删除设计师失败");
+        }
     }
 
     /**
@@ -295,6 +323,22 @@ class Company extends AdController
             $this->json_result(REQUEST_SUCCESS, "设置成功");
         } else {
             $this->json_result(API_ERROR, "", "设置失败");
+        }
+    }
+
+    /**
+     * 删除案例图片
+     * @auther lymdzu@hotmail.com
+     */
+    public function delete_case_pic()
+    {
+        $pic_id = $this->input->post("pic_id");
+        $this->load->model("CompanyModel", "company", true);
+        $delete_status = $this->company->delete_case_pic($pic_id);
+        if ($delete_status) {
+            $this->json_result(REQUEST_SUCCESS, "案例图片删除成功");
+        } else {
+            $this->json_result(API_ERROR, "", "删除失败");
         }
     }
 

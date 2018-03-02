@@ -56,7 +56,9 @@
                                                     </td>
                                                     <td>
                                                         <a class="btn btn-xs btn-warning edit-btn
-edit-btn" href="{{'company/edit_page'|base_url}}?id={{$designer.id}}">修改</a>
+edit-btn" href="{{'company/edit_page'|base_url}}?id={{$designer.id}}">修改</a>&nbsp;&nbsp;
+                                                        <button class="btn btn-xs btn-danger delete-btn
+delete-btn" data-id="{{$designer.id}}">删除</button>
                                                     </td>
                                                 </tr>
                                                 {{/foreach}}
@@ -75,6 +77,14 @@ edit-btn" href="{{'company/edit_page'|base_url}}?id={{$designer.id}}">修改</a>
     </div>
     <script type="application/javascript">
         $(function () {
-
+            $(".delete-btn").on("click", function () {
+                var id = $(this).data("id");
+                $.post("{{'company/delete_designer'|base_url}}", {id:id}, function (res) {
+                    layer.msg(res.result);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1500);
+                })
+            });
         })
     </script>
