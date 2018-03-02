@@ -118,6 +118,8 @@ class Home extends PublicController
      */
     public function life()
     {
+        $this->load->model("CompanyModel", "company", true);
+        $this->vars['pics'] = $this->company->get_activity_pic();
         $this->vars['page'] = "life";
         $this->page("life.html");
     }

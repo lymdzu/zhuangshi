@@ -157,6 +157,53 @@ class CompanyModel extends MY_Model
     }
 
     /**
+     * 保存生活照片
+     * @param $filename
+     * @return bool
+     * @auther lymdzu@hotmail.com
+     */
+    public function save_activity_pic($filename)
+    {
+        $pic = array( "pic" => $filename, "create_time" => time());
+        $insert_status = $this->db->insert("t_activity", $pic);
+        $row = $this->db->affected_rows();
+        if ($insert_status && $row > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 删除活动照片
+     * @param $id
+     * @return bool
+     * @auther lymdzu@hotmail.com
+     */
+    public function delete_activity_pic($id)
+    {
+        $this->db->where("id", $id);
+        $delete_status = $this->db->delete("t_activity");
+        $row = $this->db->affected_rows();
+        if ($delete_status && $row > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 获取活动照片
+     * @return mixed
+     * @auther lymdzu@hotmail.com
+     */
+    public function get_activity_pic()
+    {
+        $query = $this->db->get("t_activity");
+        return $query->result_array();
+    }
+
+    /**
      * 获取案例图片
      * @param $case_id
      * @return mixed

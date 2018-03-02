@@ -49,7 +49,7 @@ class Company extends AdController
         $employ_time = trim($this->input->post("employ_time"));
         $idea = trim($this->input->post("idea"));
         $expert = trim($this->input->post("expert"));
-        $designer_pic =  trim($this->input->post("designer_pic"));
+        $designer_pic = trim($this->input->post("designer_pic"));
         if (empty($designer)) {
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师姓名");
         }
@@ -79,7 +79,7 @@ class Company extends AdController
         $employ_time = trim($this->input->post("employ_time"));
         $idea = trim($this->input->post("idea"));
         $expert = trim($this->input->post("expert"));
-        $designer_pic =  trim($this->input->post("designer_pic"));
+        $designer_pic = trim($this->input->post("designer_pic"));
         if (empty($designer)) {
             $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写设计师姓名");
         }
@@ -128,6 +128,35 @@ class Company extends AdController
     }
 
     /**
+     * 生活照片后台显示管理页面
+     * @auther lymdzu@hotmail.com
+     */
+    public function activit_list()
+    {
+        $this->load->model("CompanyModel", "company", true);
+        $this->vars['pics'] = $this->company->get_activity_pic();
+        $this->page("company/activity_list.html");
+    }
+
+    /**
+     * 删除生活照片
+     * @auther lymdzu@hotmail.com
+     */
+    public function delete_activity_pic()
+    {
+        $id = $this->input->post("pic_id");
+        $name = $this->input->post("name");
+        $this->load->model("CompanyModel", "company", true);
+        $delete_status = $this->company->delete_activity_pic($id);
+        unlink(FCPATH . "upload/file/" . $name);
+        if ($delete_status) {
+            $this->json_result(REQUEST_SUCCESS, "删除成功");
+        } else {
+            $this->json_result(API_ERROR, "", "删除失败s");
+        }
+    }
+
+    /**
      * 上传案例图片
      * @author
      */
@@ -150,6 +179,7 @@ class Company extends AdController
         $targetDir = dirname(APPPATH) . '/public/upload' . DIRECTORY_SEPARATOR . 'file_material_tmp';
         $uploadDir = dirname(APPPATH) . '/public/upload' . DIRECTORY_SEPARATOR . 'file';
         $case_id = trim($this->input->post("case_id"));
+        $pic_type = $this->input->post("pic_type");
         $cleanupTargetDir = true; // Remove old files
         $maxFileAge = 5 * 3600; // Temp file age in seconds
         // Create target dir
@@ -247,6 +277,9 @@ class Company extends AdController
             $this->load->model("CompanyModel", "company", true);
             if (!empty($case_id)) {
                 $this->company->save_case_pic($case_id, $newName);
+            }
+            if ($pic_type == "activity") {
+                $this->company->save_activity_pic($newName);
             }
             $this->json_result(REQUEST_SUCCESS, $newName);
         }
